@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bindings"
+            type="com.shaatla.subscriptionmanager.subscriptions.ui.SubscriptionsBindings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{bindings.isShowEmptyState ? View.GONE : View.VISIBLE}"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_subscription"
+            tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/empty_subscription_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/subscriptions_list_is_empty"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/empty_subscription_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/empty_subscription_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_touch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/empty_subscription_text" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/empty_subscription_hint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{bindings.isShowEmptyState ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> bindings.onCreateNewClick()}"
+            app:constraint_referenced_ids="empty_subscription_text, empty_subscription_image"
+            tools:visibility="visible">
+
+        </androidx.constraintlayout.widget.Group>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

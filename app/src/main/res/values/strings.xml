@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Subscription Manager</string>
+
+    <!--    Delete everything under this line when no need-->
+    <string name="logo_here">Logo</string>
+    <string name="main_screen">Main screen</string>
+
+    <!--    Subscriptions-->
+    <string name="subscriptions_list_is_empty">Your subscriptions list is empty.\nTap to create new.</string>
+
+    <!--    Subscription Item-->
+    <string name="expiration_date">Expiration date:</string>
+
+    <!--    Subscription Info-->
+    <string name="name_hint">e.g. YouTube Premium</string>
+    <string name="save">Save</string>
+
+    <!--    Utils-->
+    <string name="subscription_image_description" translatable="false">Subscription Logo</string>
+    <string name="subscription_name_default" translatable="false">Subscription name</string>
+
+</resources>

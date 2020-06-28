@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.shaatla.subscriptionmanager.splash.ui.SplashViewModel"
+        tools:layout="@layout/fragment_splash_screen">
+
+        <action
+            android:id="@+id/to_subscriptions"
+            app:destination="@id/subscriptions" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subscriptions"
+        android:name="com.shaatla.subscriptionmanager.subscriptions.ui.SubscriptionsViewModel"
+        tools:layout="@layout/fragment_subscriptions">
+
+        <action
+            android:id="@+id/to_info"
+            app:destination="@id/subscription_info" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subscription_info"
+        android:name="com.shaatla.subscriptionmanager.subscriptioninfo.ui.SubscriptionInfoViewModel"
+        tools:layout="@layout/fragment_subscription_info">
+
+    </fragment>
+</navigation>
