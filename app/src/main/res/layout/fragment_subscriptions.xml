@@ -32,6 +32,7 @@
             android:layout_marginEnd="48dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
+            android:onClick="@{() -> bindings.onCreateNewClick()}"
             android:text="@string/subscriptions_list_is_empty"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/empty_subscription_image"
@@ -46,19 +47,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> bindings.onCreateNewClick()}"
             android:src="@drawable/ic_touch"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/empty_subscription_text" />
+            app:layout_constraintTop_toBottomOf="@+id/empty_subscription_text"
+            tools:ignore="ContentDescription" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/empty_subscription_hint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{bindings.isShowEmptyState ? View.VISIBLE : View.GONE}"
             android:onClick="@{() -> bindings.onCreateNewClick()}"
+            android:visibility="@{bindings.isShowEmptyState ? View.VISIBLE : View.GONE}"
             app:constraint_referenced_ids="empty_subscription_text, empty_subscription_image"
             tools:visibility="visible">
 

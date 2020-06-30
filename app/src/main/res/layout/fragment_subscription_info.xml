@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.text.InputType" />
+
         <variable
             name="bindings"
             type="com.shaatla.subscriptionmanager.subscriptioninfo.ui.SubscriptionInfoBindings" />
@@ -14,26 +16,102 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/subscription_name"
+        <TextView
+            android:id="@+id/subscription_name_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_default"
             android:layout_marginTop="@dimen/space_default"
-            android:hint="@string/name_hint"
-            android:inputType="text"
+            android:text="@string/subscription_title_header"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/subscription_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_default"
+            android:background="@null"
+            android:drawableEnd="@drawable/ic_edit_24"
+            android:hint="@string/name_hint"
+            android:inputType="@{bindings.isNameEditModeEnabled() ? InputType.TYPE_CLASS_TEXT : InputType.TYPE_NULL}"
+            app:layout_constraintTop_toBottomOf="@id/subscription_name_header"
+            tools:ignore="Autofill" />
+
+        <TextView
+            android:id="@+id/expiration_date_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_default"
+            android:layout_marginTop="@dimen/space_4x"
+            android:text="@string/expiration_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subscription_name" />
+
+        <TextView
+            android:id="@+id/expiration_date"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_2x"
+            android:background="@null"
+            android:drawableEnd="@drawable/ic_edit_24"
+            android:hint="@string/date_hint"
+            android:onClick="@{() -> bindings.onExpirationDateEditClick()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expiration_date_header" />
+
+        <TextView
+            android:id="@+id/price_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_default"
+            android:layout_marginTop="@dimen/space_4x"
+            android:text="@string/price_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expiration_date" />
+
+        <TextView
+            android:id="@+id/price_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_default"
+            android:hint="@string/price_currency"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_header"
+            tools:ignore="Autofill" />
+
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_default"
+            android:layout_marginTop="@dimen/space_default"
+            android:layout_marginEnd="@dimen/space_2x"
+            android:background="@null"
+            android:drawableEnd="@drawable/ic_edit_24"
+            android:hint="@string/price_hint"
+            android:inputType="@{bindings.isPriceEditModeEnabled() ? InputType.TYPE_NUMBER_FLAG_DECIMAL : InputType.TYPE_NULL}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/price_currency"
+            app:layout_constraintTop_toBottomOf="@id/price_header"
             tools:ignore="Autofill" />
 
         <Button
-            android:id="@+id/info_action_button"
+            android:id="@+id/info_close_button"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_default"
-            android:text="@string/save"
+            android:text="@string/close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

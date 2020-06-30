@@ -7,15 +7,22 @@
 
     <!--    Subscriptions-->
     <string name="subscriptions_list_is_empty">Your subscriptions list is empty.\nTap to create new.</string>
-
-    <!--    Subscription Item-->
     <string name="expiration_date">Expiration date:</string>
-
-    <!--    Subscription Info-->
     <string name="name_hint">e.g. YouTube Premium</string>
+    <string name="date_hint">10/31/2021</string>
+    <string name="price_hint">9.99</string>
+    <string name="price_currency">$</string>
+    <string name="subscription_title_header">Subscription:</string>
+    <string name="price_header">Price:</string>
+
+    <!--    Buttons-->
     <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
 
     <!--    Utils-->
+    <string name="intro_text">Your subscriptions under control</string>
     <string name="subscription_image_description" translatable="false">Subscription Logo</string>
     <string name="subscription_name_default" translatable="false">Subscription name</string>
 

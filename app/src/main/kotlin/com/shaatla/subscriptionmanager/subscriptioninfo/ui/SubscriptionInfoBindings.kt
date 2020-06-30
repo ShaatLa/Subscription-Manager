@@ -1,5 +1,7 @@
 package com.shaatla.subscriptionmanager.subscriptioninfo.ui
 
+import androidx.lifecycle.LiveData
+
 /**
  * SubscriptionInfoBindings
  * 28.06.2020
@@ -8,5 +10,11 @@ package com.shaatla.subscriptionmanager.subscriptioninfo.ui
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 interface SubscriptionInfoBindings {
-    fun onSaveButtonClick()
+    fun onCloseButtonClick()
+
+    val isNameEditModeEnabled: LiveData<Boolean>
+
+    val isPriceEditModeEnabled: LiveData<Boolean>
+
+    fun onExpirationDateEditClick()
 }

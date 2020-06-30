@@ -30,5 +30,10 @@
         android:name="com.shaatla.subscriptionmanager.subscriptioninfo.ui.SubscriptionInfoViewModel"
         tools:layout="@layout/fragment_subscription_info">
 
+        <argument
+            android:name="subscription_id"
+            android:defaultValue="0L"
+            app:argType="long"/>
+
     </fragment>
 </navigation>

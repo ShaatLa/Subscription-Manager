@@ -3,6 +3,7 @@ package com.shaatla.subscriptionmanager.subscriptions.ui
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.shaatla.subscriptionmanager.R
 import com.shaatla.subscriptionmanager.databinding.FragmentSubscriptionsBinding
 import com.shaatla.subscriptionmanager.infrastructure.structure.ui.BaseViewModel
@@ -18,8 +19,8 @@ import org.koin.android.ext.android.inject
  * shaatla@gmail.com
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
-class SubscriptionsViewModel : BaseViewModel<FragmentSubscriptionsBinding>(),
-    SubscriptionsBindings {
+class SubscriptionsViewModel :
+    BaseViewModel<FragmentSubscriptionsBinding>(), SubscriptionsBindings {
 
     override val layoutId: Int = R.layout.fragment_subscriptions
 
@@ -34,7 +35,7 @@ class SubscriptionsViewModel : BaseViewModel<FragmentSubscriptionsBinding>(),
     }
 
     override fun onCreateNewClick() {
-
+        findNavController().navigate(SubscriptionsViewModelDirections.toInfo())
     }
 
     private fun setupSubscriptionsAdapter() {
