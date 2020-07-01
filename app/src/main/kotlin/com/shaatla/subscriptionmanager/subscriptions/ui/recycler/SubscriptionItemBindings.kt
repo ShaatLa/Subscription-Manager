@@ -9,4 +9,6 @@ package com.shaatla.subscriptionmanager.subscriptions.ui.recycler
  */
 interface SubscriptionItemBindings {
     fun onClick()
+
+    fun onDeleteClick()
 }

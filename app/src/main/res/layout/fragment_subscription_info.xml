@@ -28,7 +28,7 @@
 
         <EditText
             android:id="@+id/subscription_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_2x"
             android:layout_marginTop="@dimen/space_default"
@@ -36,6 +36,8 @@
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/name_hint"
             android:inputType="@{bindings.isNameEditModeEnabled() ? InputType.TYPE_CLASS_TEXT : InputType.TYPE_NULL}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subscription_name_header"
             tools:ignore="Autofill" />
 
@@ -60,6 +62,7 @@
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/date_hint"
             android:onClick="@{() -> bindings.onExpirationDateEditClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/expiration_date_header" />
 

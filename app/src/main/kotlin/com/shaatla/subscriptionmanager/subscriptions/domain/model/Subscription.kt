@@ -12,6 +12,7 @@ import java.util.Currency
  */
 data class Subscription(
     val id: Long,
+    val creationDate: DateTime,
     val provider: String,
     val expirationDate: DateTime,
     val price: Float,
