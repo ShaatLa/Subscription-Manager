@@ -1,4 +1,4 @@
-package com.shaatla.subscriptionmanager.subscriptions.ui.adapter
+package com.shaatla.subscriptionmanager.subscriptions.ui.recycler
 
 /**
  * SubscriptionItemBindings

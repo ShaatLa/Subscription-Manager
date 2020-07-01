@@ -1,4 +1,4 @@
-package com.shaatla.subscriptionmanager.subscriptioninfo.domain.model
+package com.shaatla.subscriptionmanager.subscriptions.domain.model
 
 import org.joda.time.DateTime
 import java.util.Currency
@@ -12,7 +12,8 @@ import java.util.Currency
  */
 data class Subscription(
     val id: Long,
+    val provider: String,
     val expirationDate: DateTime,
-    val decimal: Float,
+    val price: Float,
     val currency: Currency
 )

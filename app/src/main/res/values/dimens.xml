@@ -7,4 +7,8 @@
     <item name="space_4x" type="dimen">32dp</item>
     <item name="space_6x" type="dimen">48dp</item>
 
+    <item name="text_size_default" type="dimen">16sp</item>
+    <item name="text_size_header" type="dimen">20sp</item>
+    <item name="text_size_big" type="dimen">24sp</item>
+
 </resources>

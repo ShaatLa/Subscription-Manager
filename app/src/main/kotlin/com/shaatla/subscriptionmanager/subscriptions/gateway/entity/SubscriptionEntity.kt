@@ -1,9 +1,9 @@
-package com.shaatla.subscriptionmanager.subscriptioninfo.gateway.entity
+package com.shaatla.subscriptionmanager.subscriptions.gateway.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.shaatla.subscriptionmanager.subscriptioninfo.gateway.entity.SubscriptionEntity.Companion.TABLE_NAME
+import com.shaatla.subscriptionmanager.subscriptions.gateway.entity.SubscriptionEntity.Companion.TABLE_NAME
 import java.util.Currency
 
 /**

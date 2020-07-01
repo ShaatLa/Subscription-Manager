@@ -1,7 +1,7 @@
 package com.shaatla.subscriptionmanager.subscriptioninfo.domain
 
 import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
-import com.shaatla.subscriptionmanager.subscriptioninfo.domain.model.Subscription
+import com.shaatla.subscriptionmanager.subscriptioninfo.domain.model.SubscriptionInfo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.joda.time.DateTime
@@ -14,13 +14,19 @@ import java.util.Currency
  * shaatla@gmail.com
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
-class SubscriptionInfoInteractor: SubscriptionInfoDomain {
+class SubscriptionInfoInteractor : SubscriptionInfoDomain {
 
-    override fun observeSubscription(id: Long): Flow<Subscription> =
+    override fun observeSubscriptionInfo(id: Long): Flow<SubscriptionInfo> =
         flow {
             // This is demo Subscription
             emit(
-                Subscription(1, DateTime(), 259.00f, Currency.getInstance("USD"))
+                SubscriptionInfo(
+                    1,
+                    DateTime(),
+                    259.00f,
+                    Currency.getInstance("USD"),
+                    DateTime()
+                )
             )
         }
 }

@@ -1,4 +1,4 @@
-package com.shaatla.subscriptionmanager.subscriptioninfo.gateway
+package com.shaatla.subscriptionmanager.subscriptions.gateway
 
 import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
 

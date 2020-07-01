@@ -2,8 +2,8 @@ package com.shaatla.subscriptionmanager.infrastructure.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.shaatla.subscriptionmanager.subscriptioninfo.gateway.boundary.SubscriptionDao
-import com.shaatla.subscriptionmanager.subscriptioninfo.gateway.entity.SubscriptionEntity
+import com.shaatla.subscriptionmanager.subscriptions.gateway.boundary.SubscriptionDao
+import com.shaatla.subscriptionmanager.subscriptions.gateway.entity.SubscriptionEntity
 
 /**
  * Database

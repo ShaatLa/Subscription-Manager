@@ -1,4 +1,4 @@
-package com.shaatla.subscriptionmanager.subscriptioninfo.gateway.dto
+package com.shaatla.subscriptionmanager.subscriptions.gateway.dto
 
 /**
  * SubscriptionConverter

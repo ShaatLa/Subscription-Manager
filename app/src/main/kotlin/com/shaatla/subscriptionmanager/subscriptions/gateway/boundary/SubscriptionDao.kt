@@ -1,10 +1,10 @@
-package com.shaatla.subscriptionmanager.subscriptioninfo.gateway.boundary
+package com.shaatla.subscriptionmanager.subscriptions.gateway.boundary
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.shaatla.subscriptionmanager.subscriptioninfo.gateway.entity.SubscriptionEntity
+import com.shaatla.subscriptionmanager.subscriptions.gateway.entity.SubscriptionEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
