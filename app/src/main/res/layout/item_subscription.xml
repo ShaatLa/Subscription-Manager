@@ -20,36 +20,51 @@
         android:layout_height="wrap_content"
         app:clickToClose="true"
         app:drag_edge="right"
-        app:show_mode="lay_down">
+        app:show_mode="pull_out">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_delete_button"
+            android:onClick="@{() -> bindings.onDeleteClick()}">
 
-            <com.google.android.material.button.MaterialButton
+            <ImageView
                 android:id="@+id/delete_button"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:background="@color/delete"
-                app:icon="@drawable/ic_delete_24"
-                android:onClick="@{() -> bindings.onDeleteClick()}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_delete_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:onClick="@{() -> bindings.onClick()}">
+
+            <ImageView
+                android:id="@+id/subscription_logo_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/space_half"
+                android:background="@drawable/background_subscription_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/subscription_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/subscription_logo"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginVertical="@dimen/space_default"
-                android:layout_marginStart="@dimen/space_default"
+                android:layout_marginStart="@dimen/space_2x"
                 android:contentDescription="@string/subscription_image_description"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,6 +95,7 @@
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="@{`Till: ` + item.expirationDate.toLocalDate().toString()}"
                 android:textSize="@dimen/text_size_default"
                 app:layout_constraintBottom_toBottomOf="@+id/subscription_logo"
                 app:layout_constraintEnd_toStartOf="@+id/currency"
@@ -93,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/space_default"
+                android:text="@{String.valueOf(item.price)}"
                 android:textSize="@dimen/text_size_big"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

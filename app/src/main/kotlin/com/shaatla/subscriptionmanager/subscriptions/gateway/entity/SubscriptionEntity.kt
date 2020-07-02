@@ -23,7 +23,7 @@ class SubscriptionEntity(
     @ColumnInfo(name = COLUMN_PRICE)
     val price: Float,
     @ColumnInfo(name = COLUMN_CURRENCY)
-    val currency: Currency
+    val currency: String
 ) {
 
     companion object {

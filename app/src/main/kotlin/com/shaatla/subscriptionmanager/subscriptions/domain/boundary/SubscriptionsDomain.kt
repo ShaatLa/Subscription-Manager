@@ -1,5 +1,6 @@
 package com.shaatla.subscriptionmanager.subscriptions.domain.boundary
 
+import com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -16,5 +17,5 @@ interface SubscriptionsDomain {
      *
      * @return Subscriptions list
      */
-    fun observeSubscriptions(): Flow<List<Int>>
+    fun observeSubscriptions(): Flow<List<Subscription>>
 }
