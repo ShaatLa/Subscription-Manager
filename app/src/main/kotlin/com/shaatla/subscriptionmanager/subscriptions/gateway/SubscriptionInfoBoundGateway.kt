@@ -1,6 +1,8 @@
 package com.shaatla.subscriptionmanager.subscriptions.gateway
 
 import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
+import com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription
+import kotlinx.coroutines.flow.Flow
 
 /**
  * SubscriptionBoundGateway
@@ -10,4 +12,8 @@ import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.Subscrip
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionInfoBoundGateway: SubscriptionInfoGateway {
+
+    override suspend fun observeSubscriptionInfo(id: Long): Flow<Subscription> {
+        TODO("Not yet implemented")
+    }
 }

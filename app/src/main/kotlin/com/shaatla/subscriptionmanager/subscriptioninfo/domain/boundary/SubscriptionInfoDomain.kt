@@ -1,6 +1,6 @@
 package com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary
 
-import com.shaatla.subscriptionmanager.subscriptioninfo.domain.model.SubscriptionInfo
+import com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -12,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
  */
 interface SubscriptionInfoDomain {
 
-    fun observeSubscriptionInfo(id: Long): Flow<SubscriptionInfo>
+    suspend fun observeSubscriptionInfo(id: Long): Flow<Subscription>
 }

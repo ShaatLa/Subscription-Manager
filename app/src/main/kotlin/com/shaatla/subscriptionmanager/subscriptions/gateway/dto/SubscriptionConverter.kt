@@ -1,5 +1,11 @@
 package com.shaatla.subscriptionmanager.subscriptions.gateway.dto
 
+import android.graphics.Color
+import com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription
+import com.shaatla.subscriptionmanager.subscriptions.gateway.entity.SubscriptionEntity
+import org.joda.time.DateTime
+import java.util.Currency
+
 /**
  * SubscriptionConverter
  * 30.06.2020
@@ -8,4 +14,28 @@ package com.shaatla.subscriptionmanager.subscriptions.gateway.dto
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionConverter {
+
+    fun convert(entity: SubscriptionEntity): Subscription =
+        Subscription(
+            id = entity.id,
+            provider = entity.provider,
+            expirationDate = DateTime(entity.expirationDate),
+            price = entity.price,
+            currency = Currency.getInstance(entity.currency),
+            creationDate = DateTime(entity.creationDate),
+            lastEditTime = DateTime(entity.lastEditTime),
+            color = Color.parseColor(entity.color)
+        )
+
+    fun convert(subscription: Subscription): SubscriptionEntity =
+        SubscriptionEntity(
+            id = subscription.id,
+            provider = subscription.provider,
+            expirationDate = subscription.expirationDate.toString(),
+            price = subscription.price,
+            currency = subscription.currency.currencyCode,
+            creationDate = subscription.creationDate.toString(),
+            lastEditTime = subscription.lastEditTime.toString(),
+            color = subscription.color.toString()
+        )
 }

@@ -1,5 +1,7 @@
 package com.shaatla.subscriptionmanager.subscriptions.domain
 
+import android.graphics.Color
+import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
 import com.shaatla.subscriptionmanager.subscriptions.domain.boundary.SubscriptionsDomain
 import com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +16,9 @@ import java.util.Currency
  * shaatla@gmail.com
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
-class SubscriptionsInteractor : SubscriptionsDomain {
+class SubscriptionsInteractor(
+    private val subscriptionInfoGateway: SubscriptionInfoGateway
+) : SubscriptionsDomain {
 
     override fun observeSubscriptions(): Flow<List<Subscription>> =
         flow {
@@ -26,19 +30,23 @@ class SubscriptionsInteractor : SubscriptionsDomain {
                 listOf(
                     Subscription(
                         id = 1,
-                        creationDate = DateTime().minusWeeks(1),
+                        creationDate = DateTime(),
                         provider = "Netflix",
+                        price = 19.99f,
+                        currency = Currency.getInstance("USD"),
                         expirationDate = DateTime().plusMonths(1),
-                        price = 9.99f,
-                        currency = Currency.getInstance("USD")
+                        lastEditTime = DateTime(),
+                        color = Color.parseColor("#F44336")
                     ),
                     Subscription(
                         id = 2,
                         creationDate = DateTime(),
                         provider = "Amazon Prime",
+                        price = 12.99f,
+                        currency = Currency.getInstance("USD"),
                         expirationDate = DateTime().plusMonths(1),
-                        price = 14.99f,
-                        currency = Currency.getInstance("USD")
+                        lastEditTime = DateTime(),
+                        color = Color.parseColor("#F55446")
                     )
                 )
             )

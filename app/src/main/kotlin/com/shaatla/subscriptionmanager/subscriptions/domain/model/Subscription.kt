@@ -1,5 +1,6 @@
 package com.shaatla.subscriptionmanager.subscriptions.domain.model
 
+import androidx.annotation.ColorInt
 import org.joda.time.DateTime
 import java.util.Currency
 
@@ -12,9 +13,11 @@ import java.util.Currency
  */
 data class Subscription(
     val id: Long,
-    val creationDate: DateTime,
     val provider: String,
     val expirationDate: DateTime,
     val price: Float,
-    val currency: Currency
+    val currency: Currency,
+    val creationDate: DateTime,
+    val lastEditTime: DateTime,
+    @ColorInt val color: Int
 )

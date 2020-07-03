@@ -16,7 +16,7 @@ import com.shaatla.subscriptionmanager.subscriptions.gateway.entity.Subscription
     entities = [ SubscriptionEntity::class ],
     version = 1
 )
-abstract class Database: RoomDatabase() {
+abstract class SubscribioDatabase: RoomDatabase() {
 
     abstract fun subscriptionDao(): SubscriptionDao
 }

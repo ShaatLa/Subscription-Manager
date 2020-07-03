@@ -2,6 +2,7 @@ package com.shaatla.subscriptionmanager.subscriptions
 
 import com.shaatla.subscriptionmanager.subscriptions.domain.SubscriptionsInteractor
 import com.shaatla.subscriptionmanager.subscriptions.domain.boundary.SubscriptionsDomain
+import com.shaatla.subscriptionmanager.subscriptions.gateway.dto.SubscriptionConverter
 import org.koin.dsl.module
 
 /**
@@ -16,7 +17,11 @@ object SubscriptionsModule {
     val module = module {
 
         factory<SubscriptionsDomain> {
-            SubscriptionsInteractor()
+            SubscriptionsInteractor(get())
+        }
+
+        factory {
+            SubscriptionConverter()
         }
     }
 }

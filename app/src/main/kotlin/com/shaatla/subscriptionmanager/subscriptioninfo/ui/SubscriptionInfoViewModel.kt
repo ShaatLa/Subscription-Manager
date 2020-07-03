@@ -6,6 +6,10 @@ import androidx.navigation.fragment.navArgs
 import com.shaatla.subscriptionmanager.R
 import com.shaatla.subscriptionmanager.databinding.FragmentSubscriptionInfoBinding
 import com.shaatla.subscriptionmanager.infrastructure.structure.ui.BaseViewModel
+import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
+import com.shaatla.subscriptionmanager.subscriptions.domain.boundary.SubscriptionsDomain
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /**
  * SubscriptionInfoViewModel
@@ -14,7 +18,9 @@ import com.shaatla.subscriptionmanager.infrastructure.structure.ui.BaseViewModel
  * shaatla@gmail.com
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
-class SubscriptionInfoViewModel : BaseViewModel<FragmentSubscriptionInfoBinding>() {
+class SubscriptionInfoViewModel(
+    private val subscriptionsDomain: SubscriptionsDomain
+) : BaseViewModel<FragmentSubscriptionInfoBinding>() {
 
     override val layoutId: Int = R.layout.fragment_subscription_info
 
@@ -33,7 +39,13 @@ class SubscriptionInfoViewModel : BaseViewModel<FragmentSubscriptionInfoBinding>
             }
 
             else -> {
-                //TODO observe info from DB
+                viewScope.launch {
+                    subscriptionsDomain
+                        .observeSubscriptions()
+                        .collect {
+
+                        }
+                }
             }
         }
     }

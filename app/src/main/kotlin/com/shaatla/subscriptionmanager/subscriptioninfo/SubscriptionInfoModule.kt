@@ -1,5 +1,7 @@
 package com.shaatla.subscriptionmanager.subscriptioninfo
 
+import com.shaatla.subscriptionmanager.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
+import com.shaatla.subscriptionmanager.subscriptioninfo.gateway.SubscriptionInfoBoundGateway
 import org.koin.dsl.module
 
 /**
@@ -13,5 +15,8 @@ object SubscriptionInfoModule {
 
     val module = module {
 
+        factory<SubscriptionInfoGateway> {
+            SubscriptionInfoBoundGateway(get(), get())
+        }
     }
 }
