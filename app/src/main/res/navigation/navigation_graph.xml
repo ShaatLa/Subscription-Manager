@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash"
-        android:name="com.shaatla.subscriptionmanager.splash.ui.SplashViewModel"
+        android:name="com.shaatla.subscribio.splash.ui.SplashViewModel"
         tools:layout="@layout/fragment_splash_screen">
 
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/subscriptions"
-        android:name="com.shaatla.subscriptionmanager.subscriptions.ui.SubscriptionsViewModel"
+        android:name="com.shaatla.subscribio.subscriptions.ui.SubscriptionsViewModel"
         tools:layout="@layout/fragment_subscriptions">
 
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/subscription_info"
-        android:name="com.shaatla.subscriptionmanager.subscriptioninfo.ui.SubscriptionInfoViewModel"
+        android:name="com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoViewModel"
         tools:layout="@layout/fragment_subscription_info">
 
         <argument

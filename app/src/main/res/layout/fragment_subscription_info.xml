@@ -9,7 +9,7 @@
 
         <variable
             name="bindings"
-            type="com.shaatla.subscriptionmanager.subscriptioninfo.ui.SubscriptionInfoBindings" />
+            type="com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoBindings" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Менеджер подписок</string>
-
     <!--    Subscriptions-->
     <string name="subscriptions_list_is_empty">У вас ещё нет подписок. Нажмите чтобы создать новую.</string>
     <string name="expiration_date">Дата окончания:</string>

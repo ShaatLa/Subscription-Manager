@@ -5,7 +5,7 @@
     <data>
         <variable
             name="bindings"
-            type="com.shaatla.subscriptionmanager.splash.ui.SplashBindings" />
+            type="com.shaatla.subscribio.splash.ui.SplashBindings" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

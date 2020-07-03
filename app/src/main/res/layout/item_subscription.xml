@@ -7,11 +7,11 @@
 
         <variable
             name="item"
-            type="com.shaatla.subscriptionmanager.subscriptions.domain.model.Subscription" />
+            type="com.shaatla.subscribio.subscriptions.domain.model.Subscription" />
 
         <variable
             name="bindings"
-            type="com.shaatla.subscriptionmanager.subscriptions.ui.recycler.SubscriptionItemBindings" />
+            type="com.shaatla.subscribio.subscriptions.ui.recycler.SubscriptionItemBindings" />
     </data>
 
     <com.daimajia.swipe.SwipeLayout
