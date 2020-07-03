@@ -8,6 +8,10 @@
         <import type="android.text.InputType" />
 
         <variable
+            name="item"
+            type="com.shaatla.subscribio.subscriptions.domain.model.Subscription" />
+
+        <variable
             name="bindings"
             type="com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoBindings" />
     </data>

@@ -7,7 +7,6 @@ import com.shaatla.subscribio.R
 import com.shaatla.subscribio.databinding.FragmentSubscriptionInfoBinding
 import com.shaatla.subscribio.infrastructure.structure.ui.BaseViewModel
 import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
-import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -33,24 +32,20 @@ class SubscriptionInfoViewModel(
     }
 
     private fun setupSubscriptionInfo() {
-        when (args.subscriptionId) {
-            0L -> {
-                //TODO Show empty state
-            }
+        viewScope.launch {
+            when (args.subscriptionId) {
+                0L -> {
+                    //TODO Show empty state
+                }
 
-            else -> {
-                viewScope.launch {
+                else -> {
                     subscriptionInfoDomain
                         .observeSubscriptionInfo(args.subscriptionId)
-                        .collect {
-                            setupView(it)
+                        .collect { subscription ->
+                            viewBinding.item = subscription
                         }
                 }
             }
         }
-    }
-
-    private fun setupView(subscription: Subscription) {
-        //TODO Bind it
     }
 }
