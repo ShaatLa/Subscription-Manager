@@ -18,7 +18,7 @@ object InfrastructureModule {
 
     private const val BASE_URL = ""
 
-    private const val DB_NAME = "subscription_manager.db"
+    private const val DB_NAME = "subscribio.db"
 
     val module = module {
 
