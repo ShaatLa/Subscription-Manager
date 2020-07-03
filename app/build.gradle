@@ -27,8 +27,8 @@ android {
         }
 
         configurations.all {
-            resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
-            resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
+            resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
+            resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -73,8 +73,8 @@ android {
     androidExtensions.experimental true
 
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility = kotlin_version
+        targetCompatibility = kotlin_version
     }
 
     kotlinOptions {
@@ -108,6 +108,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 
     // Koin
     def koin_version = '2.0.1'
@@ -139,7 +140,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation "com.facebook.stetho:stetho:1.5.1"
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'io.noties.markwon:core:4.3.0'
+    implementation 'io.noties.markwon:core:4.4.0'
     implementation 'jp.wasabeef:blurry:3.0.0'
     implementation 'me.everything:overscroll-decor-android:1.0.4'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
