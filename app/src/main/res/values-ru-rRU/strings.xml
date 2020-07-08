@@ -15,9 +15,9 @@
     <string name="close">Закрыть</string>
     <string name="edit">Изменить</string>
     <string name="back">Назад</string>
+    <string name="delete">Delete</string>
 
     <!--    Utils-->
     <string name="intro_text">Ваши подписки под контролем</string>
-    <string name="logo_here">Логотип</string>
     <string name="main_screen">Главный экран</string>
 </resources>

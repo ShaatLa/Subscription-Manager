@@ -6,6 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/diodrum_regular</item>
+    </style>
+
+    <style name="ButtonDefault" parent="Widget.MaterialComponents.Button">
+        <item name="background">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/diodrum_semibold</item>
     </style>
 
 </resources>
