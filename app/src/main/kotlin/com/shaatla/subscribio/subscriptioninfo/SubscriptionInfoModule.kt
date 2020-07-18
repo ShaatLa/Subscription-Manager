@@ -4,6 +4,7 @@ import com.shaatla.subscribio.subscriptioninfo.domain.SubscriptionInfoInteractor
 import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
 import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
 import com.shaatla.subscribio.subscriptioninfo.gateway.SubscriptionInfoBoundGateway
+import com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoViewModel
 import org.koin.dsl.module
 
 /**
@@ -16,6 +17,10 @@ import org.koin.dsl.module
 object SubscriptionInfoModule {
 
     val module = module {
+
+        factory<SubscriptionInfoViewModel> {
+            (id: Long) -> SubscriptionInfoViewModel(id)
+        }
 
         factory<SubscriptionInfoGateway> {
             SubscriptionInfoBoundGateway(get(), get())

@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <import type="android.text.InputType" />
-
-        <variable
-            name="item"
-            type="com.shaatla.subscribio.subscriptions.domain.model.Subscription" />
-
-        <variable
-            name="bindings"
-            type="com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoBindings" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/subscription_name_header"
@@ -39,7 +24,7 @@
             android:background="@null"
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/name_hint"
-            android:inputType="@{bindings.isNameEditModeEnabled() ? InputType.TYPE_CLASS_TEXT : InputType.TYPE_NULL}"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subscription_name_header"
@@ -65,7 +50,6 @@
             android:background="@null"
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/date_hint"
-            android:onClick="@{() -> bindings.onExpirationDateEditClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/expiration_date_header" />
@@ -103,7 +87,7 @@
             android:background="@null"
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/price_hint"
-            android:inputType="@{bindings.isPriceEditModeEnabled() ? InputType.TYPE_NUMBER_FLAG_DECIMAL : InputType.TYPE_NULL}"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/price_currency"
             app:layout_constraintTop_toBottomOf="@id/price_header"
@@ -135,4 +119,3 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>

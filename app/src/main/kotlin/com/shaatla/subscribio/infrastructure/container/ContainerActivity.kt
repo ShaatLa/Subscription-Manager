@@ -3,6 +3,7 @@ package com.shaatla.subscribio.infrastructure.container
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shaatla.subscribio.R
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
 /**
  * ContainerActivity
@@ -17,13 +18,5 @@ class ContainerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_container)
-    }
-
-    fun showLoading() {
-
-    }
-
-    fun hideLoading() {
-
     }
 }

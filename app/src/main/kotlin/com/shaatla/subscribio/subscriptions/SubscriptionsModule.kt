@@ -3,6 +3,8 @@ package com.shaatla.subscribio.subscriptions
 import com.shaatla.subscribio.subscriptions.domain.SubscriptionsInteractor
 import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsDomain
 import com.shaatla.subscribio.subscriptions.gateway.dto.SubscriptionConverter
+import com.shaatla.subscribio.subscriptions.ui.SubscriptionsViewModel
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -15,6 +17,10 @@ import org.koin.dsl.module
 object SubscriptionsModule {
 
     val module = module {
+
+        viewModel {
+            SubscriptionsViewModel()
+        }
 
         factory<SubscriptionsDomain> {
             SubscriptionsInteractor(get())

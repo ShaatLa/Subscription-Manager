@@ -1,73 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-        <import type="android.view.View" />
-
-        <variable
-            name="bindings"
-            type="com.shaatla.subscribio.subscriptions.ui.SubscriptionsBindings" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subscriptionsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="7"
+        tools:listitem="@layout/item_subscription"
+        tools:visibility="visible" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/subscriptions_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{bindings.isShowEmptyState ? View.GONE : View.VISIBLE}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="7"
-            tools:listitem="@layout/item_subscription"
-            tools:visibility="visible" />
+    <TextView
+        android:id="@+id/emptySubscriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="@string/subscriptions_list_is_empty"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/emptySubscriptionImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-            android:id="@+id/empty_subscription_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:onClick="@{() -> bindings.onCreateNewClick()}"
-            android:text="@string/subscriptions_list_is_empty"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/empty_subscription_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+    <ImageView
+        android:id="@+id/emptySubscriptionImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_touch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emptySubscriptionText"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/empty_subscription_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="@{() -> bindings.onCreateNewClick()}"
-            android:src="@drawable/ic_touch"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/empty_subscription_text"
-            tools:ignore="ContentDescription" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/emptySubscriptionHint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="emptySubscriptionText, emptySubscriptionImage"
+        tools:visibility="gone">
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/empty_subscription_hint"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="@{() -> bindings.onCreateNewClick()}"
-            android:visibility="@{bindings.isShowEmptyState ? View.VISIBLE : View.GONE}"
-            app:constraint_referenced_ids="empty_subscription_text, empty_subscription_image"
-            tools:visibility="gone">
+    </androidx.constraintlayout.widget.Group>
 
-        </androidx.constraintlayout.widget.Group>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

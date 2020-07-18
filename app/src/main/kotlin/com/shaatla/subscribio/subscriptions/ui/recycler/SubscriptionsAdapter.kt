@@ -1,8 +1,10 @@
 package com.shaatla.subscribio.subscriptions.ui.recycler
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.shaatla.subscribio.infrastructure.structure.ui.recycler.BaseAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.shaatla.subscribio.R
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 
 /**
@@ -13,12 +15,35 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionsAdapter(
-    bindings: SubscriptionItemBindings
-) : BaseAdapter<Subscription, SubscriptionItemBindings, SubscriptionViewHolder>(bindings) {
+    private val onItemClickListener: (id: Long) -> Unit
+): RecyclerView.Adapter<SubscriptionViewHolder>() {
 
-    override fun getDiffUtilCallback(newItems: List<Subscription>): DiffUtil.Callback =
-        SubscriptionsDiffUtilCallback(items, newItems)
+    private var items: List<Subscription> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscriptionViewHolder =
-        SubscriptionViewHolder.create(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscriptionViewHolder {
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.support_simple_spinner_dropdown_item, parent, false)
+
+        return SubscriptionViewHolder(
+            view,
+            onItemClickListener
+        )
+    }
+
+    override fun getItemCount(): Int = items.size
+
+
+    override fun onBindViewHolder(holder: SubscriptionViewHolder, position: Int) {
+        holder.bind(items[position])
+    }
+
+    fun updateItems(newItems: List<Subscription>) {
+        val callback = SubscriptionsDiffUtilCallback(items, newItems)
+        val result = DiffUtil.calculateDiff(callback)
+
+        items = newItems
+        result.dispatchUpdatesTo(this)
+    }
+
 }

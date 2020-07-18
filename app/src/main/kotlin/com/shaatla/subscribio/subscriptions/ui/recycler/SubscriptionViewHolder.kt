@@ -1,11 +1,8 @@
 package com.shaatla.subscribio.subscriptions.ui.recycler
 
-import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import com.shaatla.subscribio.R
-import com.shaatla.subscribio.databinding.ItemSubscriptionBinding
-import com.shaatla.subscribio.infrastructure.structure.ui.recycler.BaseViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 
 /**
@@ -16,15 +13,11 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionViewHolder(
-    viewBinding: ItemSubscriptionBinding
-): BaseViewHolder<Subscription, SubscriptionItemBindings, ItemSubscriptionBinding>(viewBinding) {
+    view: View,
+    onItemClickListener: (id: Long) -> Unit
+): RecyclerView.ViewHolder(view) {
 
-    companion object {
-        fun create(parent: ViewGroup): SubscriptionViewHolder {
-            val inflater = LayoutInflater.from(parent.context)
-            val binding: ItemSubscriptionBinding = DataBindingUtil.inflate(inflater, R.layout.item_subscription, parent, false )
+    fun bind(subscription: Subscription) {
 
-            return SubscriptionViewHolder(binding)
-        }
     }
 }

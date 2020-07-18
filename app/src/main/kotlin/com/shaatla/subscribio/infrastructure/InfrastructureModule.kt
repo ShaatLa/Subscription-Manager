@@ -1,8 +1,10 @@
 package com.shaatla.subscribio.infrastructure
 
+import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.fragment.dsl.fragment
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,6 +23,10 @@ object InfrastructureModule {
     private const val DB_NAME = "subscribio.db"
 
     val module = module {
+
+        fragment {
+            NavHostFragment()
+        }
 
         single {
             OkHttpClient.Builder()
