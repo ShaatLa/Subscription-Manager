@@ -3,6 +3,7 @@ package com.shaatla.subscribio.subscriptions.gateway.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity.Companion.TABLE_NAME
 
 /**
@@ -25,12 +26,18 @@ class SubscriptionEntity(
     val price: Float,
     @ColumnInfo(name = COLUMN_CURRENCY)
     val currency: String,
+    @ColumnInfo(name = COLUMN_PAYMENT_METHOD)
+    val paymentMethod: String,
     @ColumnInfo(name = COLUMN_CREATION_DATE)
     val creationDate: String,
     @ColumnInfo(name = COLUMN_LAST_EDIT_TIME)
     val lastEditTime: String,
+    @ColumnInfo(name = COLUMN_BILLING_PERIOD)
+    val billingPeriod: Int,
     @ColumnInfo(name = COLUMN_COLOR)
-    val color: String
+    val color: String,
+    @ColumnInfo(name = COLUMN_NOTE)
+    val note: String
 ) {
 
     companion object {
@@ -46,10 +53,16 @@ class SubscriptionEntity(
 
         const val COLUMN_CURRENCY = "currency"
 
+        const val COLUMN_PAYMENT_METHOD = "payment_method"
+
         const val COLUMN_CREATION_DATE = "creation_date"
 
         const val COLUMN_LAST_EDIT_TIME = "last_edit_time"
 
+        const val COLUMN_BILLING_PERIOD = "billing_period"
+
         const val COLUMN_COLOR = "color"
+
+        const val COLUMN_NOTE = "note"
     }
 }

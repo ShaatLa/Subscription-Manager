@@ -1,6 +1,7 @@
 package com.shaatla.subscribio.subscriptions.domain.model
 
 import androidx.annotation.ColorInt
+import androidx.annotation.IntDef
 import org.joda.time.DateTime
 import java.util.Currency
 
@@ -17,7 +18,17 @@ data class Subscription(
     val expirationDate: DateTime,
     val price: Float,
     val currency: Currency,
+    val paymentMethod: String,
     val creationDate: DateTime,
     val lastEditTime: DateTime,
-    @ColorInt val color: Int
+    val billingPeriod: BillingPeriod,
+    @ColorInt val color: Int,
+    val note: String
 )
+
+enum class BillingPeriod {
+    DAILY,
+    WEEKLY,
+    MONTHLY,
+    YEARLY
+}

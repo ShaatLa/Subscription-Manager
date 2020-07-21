@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
         <TextView
-            android:id="@+id/subscription_name_header"
+            android:id="@+id/subscriptionNameHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_default"
@@ -16,7 +16,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/subscription_name"
+            android:id="@+id/subscriptionName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_2x"
@@ -27,21 +27,21 @@
             android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subscription_name_header"
+            app:layout_constraintTop_toBottomOf="@id/subscriptionNameHeader"
             tools:ignore="Autofill" />
 
         <TextView
-            android:id="@+id/expiration_date_header"
+            android:id="@+id/expirationDateHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_default"
             android:layout_marginTop="@dimen/space_4x"
             android:text="@string/expiration_date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subscription_name" />
+            app:layout_constraintTop_toBottomOf="@id/subscriptionName" />
 
         <TextView
-            android:id="@+id/expiration_date"
+            android:id="@+id/expirationDate"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,20 +52,20 @@
             android:hint="@string/date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/expiration_date_header" />
+            app:layout_constraintTop_toBottomOf="@id/expirationDateHeader" />
 
         <TextView
-            android:id="@+id/price_header"
+            android:id="@+id/priceHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_default"
             android:layout_marginTop="@dimen/space_4x"
             android:text="@string/price_header"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/expiration_date" />
+            app:layout_constraintTop_toBottomOf="@id/expirationDate" />
 
         <TextView
-            android:id="@+id/price_currency"
+            android:id="@+id/priceCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_2x"
@@ -73,7 +73,7 @@
             android:hint="@string/price_currency"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/price_header"
+            app:layout_constraintTop_toBottomOf="@id/priceHeader"
             tools:ignore="Autofill" />
 
 
@@ -87,14 +87,14 @@
             android:background="@null"
             android:drawableEnd="@drawable/ic_edit_24"
             android:hint="@string/price_hint"
-            android:inputType="none"
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/price_currency"
-            app:layout_constraintTop_toBottomOf="@id/price_header"
+            app:layout_constraintStart_toEndOf="@id/priceCurrency"
+            app:layout_constraintTop_toBottomOf="@id/priceHeader"
             tools:ignore="Autofill" />
 
         <Button
-            android:id="@+id/info_close_button"
+            android:id="@+id/infoCloseButton"
             style="@style/ButtonDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,10 +103,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/info_delete_button" />
+            app:layout_constraintStart_toEndOf="@+id/infoDeleteButton" />
 
         <Button
-            android:id="@+id/info_delete_button"
+            android:id="@+id/infoDeleteButton"
             style="@style/ButtonDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
             android:text="@string/delete"
             android:backgroundTint="@color/delete"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/info_close_button"
+            app:layout_constraintEnd_toStartOf="@+id/infoCloseButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 

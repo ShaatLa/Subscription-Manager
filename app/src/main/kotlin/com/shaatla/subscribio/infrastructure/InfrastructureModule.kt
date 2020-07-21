@@ -1,7 +1,9 @@
 package com.shaatla.subscribio.infrastructure
 
 import androidx.navigation.fragment.NavHostFragment
+import androidx.room.Room
 import com.google.gson.Gson
+import com.shaatla.subscribio.infrastructure.database.SubscribioDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.fragment.dsl.fragment
@@ -26,6 +28,16 @@ object InfrastructureModule {
 
         fragment {
             NavHostFragment()
+        }
+
+        single {
+            Room.databaseBuilder(
+                get(),
+                SubscribioDatabase::class.java,
+                SubscribioDatabase.DATABASE_NAME
+            )
+                .fallbackToDestructiveMigration()
+                .build()
         }
 
         single {

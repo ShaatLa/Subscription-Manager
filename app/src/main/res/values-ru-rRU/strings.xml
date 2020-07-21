@@ -9,13 +9,14 @@
     <string name="price_currency">₽</string>
     <string name="subscription_title_header">Подписка:</string>
     <string name="price_header">Цена:</string>
+    <string name="till_date">До: %1$s</string>
 
     <!--    Buttons-->
     <string name="save">Сохранить</string>
     <string name="close">Закрыть</string>
     <string name="edit">Изменить</string>
     <string name="back">Назад</string>
-    <string name="delete">Delete</string>
+    <string name="delete">Удалить</string>
 
     <!--    Utils-->
     <string name="intro_text">Ваши подписки под контролем</string>

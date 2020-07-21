@@ -1,5 +1,6 @@
 package com.shaatla.subscribio.subscriptions.ui.recycler
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,12 +19,14 @@ class SubscriptionsAdapter(
     private val onItemClickListener: (id: Long) -> Unit
 ): RecyclerView.Adapter<SubscriptionViewHolder>() {
 
-    private var items: List<Subscription> = emptyList()
+    private val items = mutableListOf<Subscription>()
+
+    private val handler = Handler()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscriptionViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.support_simple_spinner_dropdown_item, parent, false)
+            .inflate(R.layout.item_subscription, parent, false)
 
         return SubscriptionViewHolder(
             view,
@@ -38,12 +41,15 @@ class SubscriptionsAdapter(
         holder.bind(items[position])
     }
 
-    fun updateItems(newItems: List<Subscription>) {
-        val callback = SubscriptionsDiffUtilCallback(items, newItems)
-        val result = DiffUtil.calculateDiff(callback)
+    fun submitList(newItems: List<Subscription>) {
+        handler.post {
+            val callback = SubscriptionsDiffUtilCallback(items, newItems)
+            val result = DiffUtil.calculateDiff(callback)
 
-        items = newItems
-        result.dispatchUpdatesTo(this)
+            items.clear()
+            items.addAll(newItems)
+            result.dispatchUpdatesTo(this)
+        }
     }
 
 }

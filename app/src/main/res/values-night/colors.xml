@@ -3,6 +3,7 @@
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#327C35</color>
     <color name="colorAccent">#23E12B</color>
+    <color name="mainBackground">#000</color>
 
     <color name="delete">#F44336</color>
 </resources>

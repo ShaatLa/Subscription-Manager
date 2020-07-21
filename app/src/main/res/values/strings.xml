@@ -13,6 +13,7 @@
     <string name="price_currency">$</string>
     <string name="subscription_title_header">Subscription:</string>
     <string name="price_header">Price:</string>
+    <string name="till_date">Till: %1$s</string>
 
     <!--    Buttons-->
     <string name="save">Save</string>

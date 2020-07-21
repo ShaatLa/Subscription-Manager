@@ -19,10 +19,6 @@ class SubscriptionInfoBoundGateway(
     private val subscriptionConverter: SubscriptionConverter
 ) : SubscriptionInfoGateway {
 
-    override suspend fun observeSubscriptionInfo(id: Long): Flow<Subscription> =
-        subscriptionDao
-            .observe(id)
-            .map { entity ->
-                subscriptionConverter.convert(entity)
-            }
+    override suspend fun getSubscriptionInfo(id: Long): Subscription =
+        subscriptionConverter.convert(subscriptionDao.get(id))
 }

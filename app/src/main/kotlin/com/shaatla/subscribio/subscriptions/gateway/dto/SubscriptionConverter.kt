@@ -1,6 +1,7 @@
 package com.shaatla.subscribio.subscriptions.gateway.dto
 
 import android.graphics.Color
+import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
 import org.joda.time.DateTime
@@ -22,9 +23,17 @@ class SubscriptionConverter {
             expirationDate = DateTime(entity.expirationDate),
             price = entity.price,
             currency = Currency.getInstance(entity.currency),
+            paymentMethod = entity.paymentMethod,
             creationDate = DateTime(entity.creationDate),
             lastEditTime = DateTime(entity.lastEditTime),
-            color = Color.parseColor(entity.color)
+            billingPeriod = when (entity.billingPeriod) {
+                0 -> BillingPeriod.DAILY
+                1 -> BillingPeriod.WEEKLY
+                2 -> BillingPeriod.MONTHLY
+                else -> BillingPeriod.YEARLY
+            },
+            color = Color.parseColor(entity.color),
+            note = entity.note
         )
 
     fun convert(subscription: Subscription): SubscriptionEntity =
@@ -34,8 +43,11 @@ class SubscriptionConverter {
             expirationDate = subscription.expirationDate.toString(),
             price = subscription.price,
             currency = subscription.currency.currencyCode,
+            paymentMethod = subscription.paymentMethod,
             creationDate = subscription.creationDate.toString(),
             lastEditTime = subscription.lastEditTime.toString(),
-            color = subscription.color.toString()
+            billingPeriod = subscription.billingPeriod.ordinal,
+            color = subscription.color.toString(),
+            note = subscription.note
         )
 }

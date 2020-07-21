@@ -15,7 +15,7 @@
         android:background="@drawable/background_delete_button">
 
         <ImageView
-            android:id="@+id/delete_button"
+            android:id="@+id/deleteButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_delete_24"
@@ -33,19 +33,19 @@
         android:background="@android:color/white">
 
         <ImageView
-            android:id="@+id/subscription_logo_background"
+            android:id="@+id/subscriptionLogoBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/space_half"
-            android:background="@drawable/background_subscription_logo"
+            android:src="@drawable/background_subscription_logo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/subscription_name"
+            app:layout_constraintEnd_toStartOf="@id/subscriptionName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/subscription_logo"
+            android:id="@+id/subscriptionLogo"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginVertical="@dimen/space_default"
@@ -58,7 +58,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/subscription_name"
+            android:id="@+id/subscriptionName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -68,25 +68,24 @@
             android:textSize="@dimen/text_size_header"
             app:layout_constraintEnd_toStartOf="@+id/currency"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/subscription_logo"
-            app:layout_constraintTop_toTopOf="@id/subscription_logo"
+            app:layout_constraintStart_toEndOf="@id/subscriptionLogo"
+            app:layout_constraintTop_toTopOf="@id/subscriptionLogo"
             tools:text="Netflix" />
 
         <TextView
-            android:id="@+id/subscription_date"
+            android:id="@+id/subscriptionDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{`Till: ` + item.expirationDate.toLocalDate().toString()}"
             android:textSize="@dimen/text_size_default"
-            app:layout_constraintBottom_toBottomOf="@+id/subscription_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/subscriptionLogo"
             app:layout_constraintEnd_toStartOf="@+id/currency"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/subscription_logo"
-            app:layout_constraintTop_toBottomOf="@id/subscription_name"
+            app:layout_constraintStart_toEndOf="@id/subscriptionLogo"
+            app:layout_constraintTop_toBottomOf="@id/subscriptionName"
             tools:text="Till: 31.12.2020" />
 
         <TextView

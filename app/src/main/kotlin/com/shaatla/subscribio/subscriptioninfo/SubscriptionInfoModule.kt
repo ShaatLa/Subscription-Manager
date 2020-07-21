@@ -18,8 +18,8 @@ object SubscriptionInfoModule {
 
     val module = module {
 
-        factory<SubscriptionInfoViewModel> {
-            (id: Long) -> SubscriptionInfoViewModel(id)
+        factory {
+            (id: Long) -> SubscriptionInfoViewModel(get(), id)
         }
 
         factory<SubscriptionInfoGateway> {

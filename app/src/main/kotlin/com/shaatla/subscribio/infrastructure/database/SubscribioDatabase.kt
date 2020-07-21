@@ -14,9 +14,13 @@ import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
  */
 @Database(
     entities = [ SubscriptionEntity::class ],
-    version = 1
+    version = 2
 )
 abstract class SubscribioDatabase: RoomDatabase() {
 
-    abstract fun subscriptionDao(): SubscriptionDao
+    abstract fun getSubscriptionDao(): SubscriptionDao
+
+    companion object {
+        const val DATABASE_NAME = "subscribio.db"
+    }
 }

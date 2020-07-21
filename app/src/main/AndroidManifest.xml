@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
-        <activity android:name="com.shaatla.subscribio.infrastructure.container.ContainerActivity">
+        <activity
+            android:name="com.shaatla.subscribio.infrastructure.container.ContainerActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -12,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
  */
 interface SubscriptionInfoGateway {
 
-    suspend fun observeSubscriptionInfo(id: Long): Flow<Subscription>
+    suspend fun getSubscriptionInfo(id: Long): Subscription
 }

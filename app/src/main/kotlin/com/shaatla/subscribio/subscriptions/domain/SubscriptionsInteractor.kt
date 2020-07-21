@@ -22,33 +22,33 @@ class SubscriptionsInteractor(
 
     override fun observeSubscriptions(): Flow<List<Subscription>> =
         flow {
-            //For demo purposes
-            //emit(emptyList())
+//            //For demo purposes
+            emit(emptyList())
 
-            //For demo purposes
-            emit(
-                listOf(
-                    Subscription(
-                        id = 1,
-                        creationDate = DateTime(),
-                        provider = "Netflix",
-                        price = 19.99f,
-                        currency = Currency.getInstance("USD"),
-                        expirationDate = DateTime().plusMonths(1),
-                        lastEditTime = DateTime(),
-                        color = Color.parseColor("#F44336")
-                    ),
-                    Subscription(
-                        id = 2,
-                        creationDate = DateTime(),
-                        provider = "Amazon Prime",
-                        price = 12.99f,
-                        currency = Currency.getInstance("USD"),
-                        expirationDate = DateTime().plusMonths(1),
-                        lastEditTime = DateTime(),
-                        color = Color.parseColor("#F55446")
-                    )
-                )
-            )
+//            For demo purposes
+//            emit(
+//                listOf(
+//                    Subscription(
+//                        id = 1,
+//                        creationDate = DateTime(),
+//                        provider = "Netflix",
+//                        price = 19.99f,
+//                        currency = Currency.getInstance("USD"),
+//                        expirationDate = DateTime().plusMonths(1),
+//                        lastEditTime = DateTime(),
+//                        color = Color.parseColor("#f44336")
+//                    ),
+//                    Subscription(
+//                        id = 2,
+//                        creationDate = DateTime(),
+//                        provider = "Amazon Prime",
+//                        price = 12.99f,
+//                        currency = Currency.getInstance("USD"),
+//                        expirationDate = DateTime().plusMonths(1),
+//                        lastEditTime = DateTime(),
+//                        color = Color.parseColor("#1bab2c")
+//                    )
+//                )
+//            )
         }
 }

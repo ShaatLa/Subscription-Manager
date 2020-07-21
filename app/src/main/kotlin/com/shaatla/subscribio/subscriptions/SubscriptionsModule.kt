@@ -1,5 +1,6 @@
 package com.shaatla.subscribio.subscriptions
 
+import com.shaatla.subscribio.infrastructure.database.SubscribioDatabase
 import com.shaatla.subscribio.subscriptions.domain.SubscriptionsInteractor
 import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsDomain
 import com.shaatla.subscribio.subscriptions.gateway.dto.SubscriptionConverter
@@ -19,7 +20,7 @@ object SubscriptionsModule {
     val module = module {
 
         viewModel {
-            SubscriptionsViewModel()
+            SubscriptionsViewModel(get())
         }
 
         factory<SubscriptionsDomain> {
@@ -28,6 +29,10 @@ object SubscriptionsModule {
 
         factory {
             SubscriptionConverter()
+        }
+
+        single {
+            get<SubscribioDatabase>().getSubscriptionDao()
         }
     }
 }

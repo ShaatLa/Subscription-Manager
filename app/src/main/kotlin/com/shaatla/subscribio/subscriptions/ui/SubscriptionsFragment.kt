@@ -2,11 +2,17 @@ package com.shaatla.subscribio.subscriptions.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.shaatla.subscribio.R
+import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.ui.recycler.SubscriptionsAdapter
 import com.shaatla.subscribio.subscriptions.ui.recycler.SubscriptionsItemDecoration
+import kotlinx.android.synthetic.main.fragment_subscriptions.emptyStateParentLayout
+import kotlinx.android.synthetic.main.fragment_subscriptions.emptySubscriptionsHint
 import kotlinx.android.synthetic.main.fragment_subscriptions.subscriptionsRecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +28,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
  */
 class SubscriptionsFragment : Fragment(R.layout.fragment_subscriptions) {
 
-    private val viewScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-
-    private val viewModel by viewModel<SubscriptionsViewModel>()
+    private val viewModel: SubscriptionsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,8 +36,12 @@ class SubscriptionsFragment : Fragment(R.layout.fragment_subscriptions) {
         setupSubscriptionsAdapter()
     }
 
-    private fun onCreateNewClick() {
-        findNavController().navigate(SubscriptionsFragmentDirections.toInfo())
+    private fun setupEmptySubscriptionsHint() {
+        subscriptionsRecyclerView.isGone = true
+        emptySubscriptionsHint.isVisible = true
+        emptyStateParentLayout.setOnClickListener {
+            findNavController().navigate(SubscriptionsFragmentDirections.toInfo())
+        }
     }
 
     private fun setupSubscriptionsAdapter() {
@@ -44,13 +52,17 @@ class SubscriptionsFragment : Fragment(R.layout.fragment_subscriptions) {
         subscriptionsRecyclerView.adapter = adapter
         subscriptionsRecyclerView.addItemDecoration(SubscriptionsItemDecoration(8))
 
-//        viewScope.launch {
-//            subscriptionsDomain.observeSubscriptions()
-//                .collect { subscriptions ->
-//                    isShowEmptyState.postValue(subscriptions.isEmpty())
-//
-//                    adapter.submitList(subscriptions)
-//                }
-//        }
+        viewModel
+            .observeSubscriptions()
+            .observe(
+                viewLifecycleOwner,
+                Observer<List<Subscription>> { subscriptions ->
+                    if (subscriptions.isEmpty()) {
+                        setupEmptySubscriptionsHint()
+                    } else {
+                        adapter.submitList(subscriptions)
+                    }
+                }
+            )
     }
 }
