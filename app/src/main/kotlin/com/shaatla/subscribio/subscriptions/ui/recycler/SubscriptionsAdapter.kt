@@ -16,7 +16,7 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionsAdapter(
-    private val onItemClickListener: (id: Long) -> Unit
+    private val onItemClickListener: (id: Int) -> Unit
 ): RecyclerView.Adapter<SubscriptionViewHolder>() {
 
     private val items = mutableListOf<Subscription>()

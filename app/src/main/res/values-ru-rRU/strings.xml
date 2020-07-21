@@ -2,14 +2,26 @@
 <resources>
     <!--    Subscriptions-->
     <string name="subscriptions_list_is_empty">У вас ещё нет подписок. Нажмите чтобы создать новую.</string>
-    <string name="expiration_date">Дата окончания:</string>
-    <string name="name_hint">напр.: YouTube Premium</string>
-    <string name="date_hint">31.02.2021</string>
+    <string name="first_payment_date">Дата начала действия подписки:</string>
+    <string name="name_hint">Напр.: YouTube Premium</string>
+    <string name="date_hint">01 фев. 2021</string>
     <string name="price_hint">299</string>
     <string name="price_currency">₽</string>
     <string name="subscription_title_header">Подписка:</string>
-    <string name="price_header">Цена:</string>
+    <string name="price_header">Стоимость:</string>
     <string name="till_date">До: %1$s</string>
+    <string name="change_currency">Изменить валюту</string>
+    <string name="billing_period_header">Период оплаты:</string>
+    <string name="color_header">Цвет:</string>
+    <string name="icon_header">Иконка:</string>
+    <string name="note_header">Заметки:</string>
+
+    <string-array name="billing_periods">
+        <item>Ежедневно</item>
+        <item>Еженедельно</item>
+        <item>Ежемесячно</item>
+        <item>Ежегодно</item>
+    </string-array>
 
     <!--    Buttons-->
     <string name="save">Сохранить</string>
@@ -21,4 +33,5 @@
     <!--    Utils-->
     <string name="intro_text">Ваши подписки под контролем</string>
     <string name="main_screen">Главный экран</string>
+    <string name="currency_dialog_header">Выберите валюту:</string>
 </resources>

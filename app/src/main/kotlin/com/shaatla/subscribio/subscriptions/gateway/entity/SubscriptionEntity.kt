@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
+import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity.Companion.TABLE_NAME
 
 /**
@@ -17,7 +18,9 @@ import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity.Co
 class SubscriptionEntity(
     @PrimaryKey
     @ColumnInfo(name = COLUMN_ID)
-    val id: Long,
+    val id: Int,
+    @ColumnInfo(name = COLUMN_ICON)
+    val icon: String,
     @ColumnInfo(name = COLUMN_PROVIDER)
     val provider: String,
     @ColumnInfo(name = COLUMN_DATE)
@@ -35,15 +38,21 @@ class SubscriptionEntity(
     @ColumnInfo(name = COLUMN_BILLING_PERIOD)
     val billingPeriod: Int,
     @ColumnInfo(name = COLUMN_COLOR)
-    val color: String,
+    val color: Int,
     @ColumnInfo(name = COLUMN_NOTE)
-    val note: String
+    val note: String,
+    @ColumnInfo(name = COLUMN_NOTIFICATION)
+    val notification: Boolean,
+    @ColumnInfo(name = COLUMN_NOTIFICATION_PERIOD)
+    val notificationPeriod: Int
 ) {
 
     companion object {
         const val TABLE_NAME = "subscription"
 
         const val COLUMN_ID = "id"
+
+        const val COLUMN_ICON = "icon"
 
         const val COLUMN_PROVIDER = "provider"
 
@@ -64,5 +73,9 @@ class SubscriptionEntity(
         const val COLUMN_COLOR = "color"
 
         const val COLUMN_NOTE = "note"
+
+        const val COLUMN_NOTIFICATION = "notification"
+
+        const val COLUMN_NOTIFICATION_PERIOD = "notification_period"
     }
 }

@@ -6,14 +6,27 @@
 
     <!--    Subscriptions-->
     <string name="subscriptions_list_is_empty">Your subscriptions list is empty.\nTap to create new.</string>
-    <string name="expiration_date">Expiration date:</string>
+    <string name="first_payment_date">First payment date:</string>
     <string name="name_hint">e.g. YouTube Premium</string>
-    <string name="date_hint">10/31/2021</string>
+    <string name="date_hint">31 Oct 2021</string>
     <string name="price_hint">9.99</string>
     <string name="price_currency">$</string>
     <string name="subscription_title_header">Subscription:</string>
     <string name="price_header">Price:</string>
     <string name="till_date">Till: %1$s</string>
+    <string name="change_currency">Change currency</string>
+    <string name="billing_period_header">Billing period:</string>
+    <string name="color_header">Color:</string>
+    <string name="icon_header">Icon:</string>
+    <string name="icon_hint" translatable="false">📺</string>
+    <string name="note_header">Note:</string>
+
+    <string-array name="billing_periods">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
 
     <!--    Buttons-->
     <string name="save">Save</string>
@@ -26,5 +39,6 @@
     <string name="intro_text">Your subscriptions under control</string>
     <string name="subscription_image_description" translatable="false">Subscription Logo</string>
     <string name="subscription_name_default" translatable="false">Subscription name</string>
+    <string name="currency_dialog_header">Select currency:</string>
 
 </resources>

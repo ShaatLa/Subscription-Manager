@@ -2,7 +2,8 @@ package com.shaatla.subscribio.infrastructure.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.shaatla.subscribio.subscriptions.gateway.boundary.SubscriptionDao
+import com.shaatla.subscribio.subscriptioninfo.gateway.boundary.SubscriptionInfoDao
+import com.shaatla.subscribio.subscriptions.gateway.boundary.SubscriptionsDao
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
 
 /**
@@ -14,11 +15,13 @@ import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
  */
 @Database(
     entities = [ SubscriptionEntity::class ],
-    version = 2
+    version = 1
 )
 abstract class SubscribioDatabase: RoomDatabase() {
 
-    abstract fun getSubscriptionDao(): SubscriptionDao
+    abstract fun getSubscriptionInfoDao(): SubscriptionInfoDao
+
+    abstract fun getSubscriptionsDao(): SubscriptionsDao
 
     companion object {
         const val DATABASE_NAME = "subscribio.db"

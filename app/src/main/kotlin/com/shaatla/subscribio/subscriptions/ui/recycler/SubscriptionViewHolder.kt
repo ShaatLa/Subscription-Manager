@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.item_subscription.view.subscriptionName
  */
 class SubscriptionViewHolder(
     private val view: View,
-    private val onItemClickListener: (id: Long) -> Unit
+    private val onItemClickListener: (id: Int) -> Unit
 ) : RecyclerView.ViewHolder(view) {
 
     fun bind(subscription: Subscription) {

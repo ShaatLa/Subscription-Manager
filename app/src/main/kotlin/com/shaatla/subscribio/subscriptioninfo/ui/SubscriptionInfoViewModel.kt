@@ -6,7 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
 import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
+import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import java.util.Currency
@@ -20,12 +24,15 @@ import java.util.Locale
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionInfoViewModel(
-    private val subscriptionInfoDomain: SubscriptionInfoDomain,
-    private val id: Long
+    private val domain: SubscriptionInfoDomain,
+    private val id: Int
 ) : ViewModel() {
 
-    var subscription: Subscription = Subscription(
-        id = 1L,
+    private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    var baseSubscription: Subscription = Subscription(
+        id = 1,
+        icon = "",
         provider = "",
         expirationDate = DateTime(),
         price = 0.00f,
@@ -35,23 +42,31 @@ class SubscriptionInfoViewModel(
         lastEditTime = DateTime(),
         billingPeriod = BillingPeriod.MONTHLY,
         color = Color.GREEN,
-        note = ""
+        note = "",
+        doesNotificationNeed = false,
+        notificationPeriod = NotificationPeriod.NONE
     )
 
     val subscriptionLiveData = MutableLiveData<Subscription>()
 
-    suspend fun getSubscriptionInfo() {
-        subscriptionInfoDomain.getSubscriptionInfo(id).also {
-            subscription = it
-            subscriptionLiveData.postValue(it)
+    fun getSubscriptionInfo() {
+        viewModelScope.launch {
+            domain.getSubscription(id).also { subscription ->
+                baseSubscription = subscription
+                subscriptionLiveData.postValue(subscription)
+            }
+        }
+    }
+
+    fun saveSubscription() {
+        viewModelScope.launch {
+            domain.save(baseSubscription)
         }
     }
 
     fun deleteSubscription() {
         viewModelScope.launch {
-            subscriptionInfoDomain //.deleteSubscription(id)
+            domain.deleteSubscription(id)
         }
     }
-
-
 }

@@ -12,9 +12,17 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionInfoInteractor(
-    private val subscriptionInfoGateway: SubscriptionInfoGateway
+    private val gateway: SubscriptionInfoGateway
 ) : SubscriptionInfoDomain {
 
-    override suspend fun getSubscriptionInfo(id: Long): Subscription =
-        subscriptionInfoGateway.getSubscriptionInfo(id)
+    override suspend fun getSubscription(id: Int): Subscription =
+        gateway.getSubscription(id)
+
+    override suspend fun save(subscription: Subscription) {
+        gateway.save(subscription)
+    }
+
+    override suspend fun deleteSubscription(id: Int) {
+        gateway.delete(id)
+    }
 }

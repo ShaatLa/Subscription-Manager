@@ -1,4 +1,4 @@
-package com.shaatla.subscribio.subscriptions.gateway.boundary
+package com.shaatla.subscribio.subscriptioninfo.gateway.boundary
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -15,15 +15,7 @@ import kotlinx.coroutines.flow.Flow
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 @Dao
-interface SubscriptionDao {
-
-    /**
-     * Observe all subscriptions from DB
-     *
-     * @return subscriptions flow
-     */
-    @Query("SELECT * FROM ${SubscriptionEntity.TABLE_NAME}")
-    fun observeAll(): Flow<List<SubscriptionEntity>>
+interface SubscriptionInfoDao {
 
     /**
      * Observe certain subscription
@@ -32,7 +24,7 @@ interface SubscriptionDao {
      * @return certain subscription flow
      */
     @Query("SELECT * FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun observe(id: Long): Flow<SubscriptionEntity>
+    fun observe(id: Int): Flow<SubscriptionEntity>
 
     /**
      * Return certain subscription
@@ -41,15 +33,15 @@ interface SubscriptionDao {
      * @return certain subscription
      */
     @Query("SELECT * FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun get(id: Long): SubscriptionEntity
+    fun get(id: Int): SubscriptionEntity
 
     /**
      * Save subscription into DB
      *
-     * @param subscriptionEntity subscription which have to be saved
+     * @param entity subscription which have to be saved
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(subscriptionEntity: SubscriptionEntity)
+    fun save(entity: SubscriptionEntity)
 
     /**
      * Delete Subscription by ID
@@ -57,5 +49,5 @@ interface SubscriptionDao {
      * @param id id of subscription which have to be deleted
      */
     @Query("DELETE FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun delete(id: Long)
+    fun delete(id: Int)
 }

@@ -15,4 +15,19 @@
         <item name="android:fontFamily">@font/diodrum_semibold</item>
     </style>
 
+    <style name="InfoEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/diodrum_light</item>
+        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="hintTextColor">@color/textHint</item>
+    </style>
+
+    <style name="InfoTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/diodrum_light</item>
+        <item name="android:textSize">@dimen/text_size_big</item>
+    </style>
+
+    <style name="PeriodSpinnerItem">
+        <item name="android:textSize">@dimen/text_size_big</item>
+    </style>
+
 </resources>

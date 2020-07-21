@@ -1,13 +1,9 @@
 package com.shaatla.subscribio.subscriptions.domain
 
-import android.graphics.Color
-import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoGateway
 import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsDomain
+import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsGateway
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import org.joda.time.DateTime
-import java.util.Currency
 
 /**
  * SubscriptionsDomain
@@ -17,13 +13,11 @@ import java.util.Currency
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionsInteractor(
-    private val subscriptionInfoGateway: SubscriptionInfoGateway
+    private val gateway: SubscriptionsGateway
 ) : SubscriptionsDomain {
 
     override fun observeSubscriptions(): Flow<List<Subscription>> =
-        flow {
-//            //For demo purposes
-            emit(emptyList())
+        gateway.observeSubscriptions()
 
 //            For demo purposes
 //            emit(
@@ -50,5 +44,4 @@ class SubscriptionsInteractor(
 //                    )
 //                )
 //            )
-        }
 }

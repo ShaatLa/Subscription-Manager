@@ -12,5 +12,26 @@ import kotlinx.coroutines.flow.Flow
  */
 interface SubscriptionInfoGateway {
 
-    suspend fun getSubscriptionInfo(id: Long): Subscription
+    /**
+     * Get subscription according it's id
+     *
+     * @param id ID of the subscription
+     * @return Subscription from DB
+     */
+    suspend fun getSubscription(id: Int): Subscription
+
+    /**
+     * Save subscription to local DB
+     *
+     * @param subscription to save
+     */
+    suspend fun save(subscription: Subscription)
+
+
+    /**
+     * Delete subscription from local DB
+     *
+     * @param id of subscription which have to be deleted
+     */
+    suspend fun delete(id: Int)
 }

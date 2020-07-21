@@ -6,7 +6,9 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.shaatla.subscribio.infrastructure.database.SubscribioDatabase
-import com.shaatla.subscribio.subscriptions.gateway.boundary.SubscriptionDao
+import com.shaatla.subscribio.subscriptioninfo.gateway.boundary.SubscriptionInfoDao
+import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
+import com.shaatla.subscribio.subscriptions.gateway.boundary.SubscriptionsDao
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
 import org.hamcrest.CoreMatchers.equalTo
 import org.joda.time.DateTime
@@ -26,14 +28,14 @@ import java.io.IOException
  */
 @RunWith(AndroidJUnit4::class)
 class DatabaseTest {
-    private lateinit var subscriptionDao: SubscriptionDao
+    private lateinit var dao: SubscriptionInfoDao
     private lateinit var db: SubscribioDatabase
 
     @Before
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, SubscribioDatabase::class.java).build()
-        subscriptionDao = db.subscriptionDao()
+        dao = db.getSubscriptionInfoDao()
     }
 
     @After
@@ -46,9 +48,9 @@ class DatabaseTest {
     @Throws(Exception::class)
     fun writeAndReadTest() {
         val subscriptionEntity: SubscriptionEntity = TestUtil.createSubscription(SUBSCRIPTION_TEST_ID)
-        subscriptionDao.save(subscriptionEntity)
+        dao.save(subscriptionEntity)
 
-        val subscriptionEntityFromDb = subscriptionDao.get(SUBSCRIPTION_TEST_ID)
+        val subscriptionEntityFromDb = dao.get(SUBSCRIPTION_TEST_ID)
         assertThat(subscriptionEntity.id, equalTo(subscriptionEntityFromDb.id))
         assertThat(subscriptionEntity.provider, equalTo(subscriptionEntityFromDb.provider))
         assertThat(subscriptionEntity.expirationDate, equalTo(subscriptionEntityFromDb.expirationDate))
@@ -61,22 +63,28 @@ class DatabaseTest {
 
     private class TestUtil {
         companion object {
-            fun createSubscription(id: Long) =
+            fun createSubscription(id: Int) =
                 SubscriptionEntity(
                     id = id,
+                    icon = "",
                     provider = "Netflix",
                     expirationDate = DateTime().toString(),
                     price = 9.99f,
                     currency = "USD",
                     creationDate = DateTime().toString(),
                     lastEditTime = DateTime().toString(),
-                    color = Color.parseColor(TEST_COLOR_CODE).toString()
+                    color = Color.parseColor(TEST_COLOR_CODE).toString(),
+                    billingPeriod = 2,
+                    notification = false,
+                    notificationPeriod = 0,
+                    note = "",
+                    paymentMethod = ""
                 )
         }
     }
 
     companion object {
-        private const val SUBSCRIPTION_TEST_ID = 3L
+        private const val SUBSCRIPTION_TEST_ID = 3
 
         private const val TEST_COLOR_CODE = "#F44336"
     }

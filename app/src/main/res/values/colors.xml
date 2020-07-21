@@ -5,5 +5,7 @@
     <color name="colorAccent">#23E12B</color>
     <color name="mainBackground">#FFF</color>
 
+    <color name="textHint">#424242</color>
+
     <color name="delete">#F44336</color>
 </resources>
