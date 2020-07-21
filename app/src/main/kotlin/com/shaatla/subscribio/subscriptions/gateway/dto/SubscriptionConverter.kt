@@ -1,6 +1,5 @@
 package com.shaatla.subscribio.subscriptions.gateway.dto
 
-import android.graphics.Color
 import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
@@ -36,7 +35,7 @@ class SubscriptionConverter {
             },
             color = entity.color,
             note = entity.note,
-            doesNotificationNeed = entity.notification,
+            doesNotificationNeed = entity.doesNotificationNeed,
             notificationPeriod = when (entity.notificationPeriod) {
                 0 -> NotificationPeriod.NONE
                 1 -> NotificationPeriod.IN_THE_SAME_DAY
@@ -61,7 +60,7 @@ class SubscriptionConverter {
             billingPeriod = subscription.billingPeriod.ordinal,
             color = subscription.color,
             note = subscription.note,
-            notification = subscription.doesNotificationNeed,
+            doesNotificationNeed = subscription.doesNotificationNeed,
             notificationPeriod = subscription.notificationPeriod.ordinal
         )
 }

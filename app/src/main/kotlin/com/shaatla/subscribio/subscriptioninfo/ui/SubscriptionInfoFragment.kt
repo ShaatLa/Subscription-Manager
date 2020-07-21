@@ -33,9 +33,6 @@ import kotlinx.android.synthetic.main.fragment_subscription_info.infoDeleteButto
 import kotlinx.android.synthetic.main.fragment_subscription_info.price
 import kotlinx.android.synthetic.main.fragment_subscription_info.priceCurrency
 import kotlinx.android.synthetic.main.fragment_subscription_info.subscriptionName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import org.joda.time.DateTime
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf

@@ -42,7 +42,7 @@ class SubscriptionEntity(
     @ColumnInfo(name = COLUMN_NOTE)
     val note: String,
     @ColumnInfo(name = COLUMN_NOTIFICATION)
-    val notification: Boolean,
+    val doesNotificationNeed: Boolean,
     @ColumnInfo(name = COLUMN_NOTIFICATION_PERIOD)
     val notificationPeriod: Int
 ) {

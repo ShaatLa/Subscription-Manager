@@ -3,6 +3,8 @@ package com.shaatla.subscribio
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
+import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
+import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.gateway.dto.SubscriptionConverter
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
@@ -54,7 +56,13 @@ class SubscriptionConverterTest {
             currency = Currency.getInstance("USD").currencyCode,
             expirationDate = currentDate.plusMonths(1).toString(),
             lastEditTime = currentDate.toString(),
-            color = Color.parseColor("#F44336").toString()
+            color = Color.parseColor("#F44336"),
+            billingPeriod = BillingPeriod.MONTHLY.ordinal,
+            icon = "TeStIc",
+            note = "This is Note",
+            doesNotificationNeed = true,
+            notificationPeriod = NotificationPeriod.THREE_DAYS_BEFORE.ordinal,
+            paymentMethod = "Credit Card"
         )
 
         val subscription = Subscription(
@@ -65,7 +73,13 @@ class SubscriptionConverterTest {
             currency = Currency.getInstance("USD"),
             expirationDate = currentDate.plusMonths(1),
             lastEditTime = currentDate,
-            color = Color.parseColor("#F44336")
+            color = Color.parseColor("#F44336"),
+            billingPeriod = BillingPeriod.MONTHLY,
+            icon = "TeStIc",
+            note = "This is Note",
+            doesNotificationNeed = true,
+            notificationPeriod = NotificationPeriod.THREE_DAYS_BEFORE,
+            paymentMethod = "Credit Card"
         )
 
         runBlocking {
@@ -91,7 +105,12 @@ class SubscriptionConverterTest {
                 equalTo(converter.convert(entity).expirationDate)
             )
             assertThat(subscription.lastEditTime, equalTo(converter.convert(entity).lastEditTime))
-            assertThat(subscription.color, equalTo(converter.convert(entity).color))
+            assertThat(subscription.billingPeriod, equalTo(converter.convert(entity).billingPeriod))
+            assertThat(subscription.icon, equalTo(converter.convert(entity).icon))
+            assertThat(subscription.doesNotificationNeed, equalTo(converter.convert(entity).doesNotificationNeed))
+            assertThat(subscription.notificationPeriod, equalTo(converter.convert(entity).notificationPeriod))
+            assertThat(subscription.paymentMethod, equalTo(converter.convert(entity).paymentMethod))
+            assertThat(subscription.note, equalTo(converter.convert(entity).note))
         }
     }
 }
