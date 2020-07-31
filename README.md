@@ -2,6 +2,7 @@
 
 Simple application to manage all your susbcriptions.
 
+
 Architecture: MVVM + Clean
 
 DB: Room
