@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.shaatla.subscribio.R
+import com.shaatla.subscribio.infrastructure.extension.setupNavigationBarColor
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.ui.recycler.ItemAction
 import com.shaatla.subscribio.subscriptions.ui.recycler.SubscriptionsAdapter
@@ -34,8 +35,10 @@ class SubscriptionsFragment : Fragment(R.layout.fragment_subscriptions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().window.navigationBarColor =
+        setupNavigationBarColor(
+            requireActivity(),
             resources.getColor(R.color.colorPrimaryDark, null)
+        )
 
         setupFloatButton()
 

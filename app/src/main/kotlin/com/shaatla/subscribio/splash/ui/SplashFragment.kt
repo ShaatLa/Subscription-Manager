@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.shaatla.subscribio.R
+import com.shaatla.subscribio.infrastructure.extension.setupNavigationBarColor
 import java.util.Timer
 import kotlin.concurrent.schedule
 
@@ -20,8 +21,10 @@ class SplashFragment : Fragment(R.layout.fragment_splash_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().window.navigationBarColor =
+        setupNavigationBarColor(
+            requireActivity(),
             resources.getColor(R.color.colorPrimary, null)
+        )
     }
 
     override fun onResume() {
