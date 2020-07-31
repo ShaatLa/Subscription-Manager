@@ -1,5 +1,7 @@
 package com.shaatla.subscribio.splash.ui
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.shaatla.subscribio.R
@@ -14,6 +16,13 @@ import kotlin.concurrent.schedule
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SplashFragment : Fragment(R.layout.fragment_splash_screen) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().window.navigationBarColor =
+            resources.getColor(R.color.colorPrimary, null)
+    }
 
     override fun onResume() {
         super.onResume()

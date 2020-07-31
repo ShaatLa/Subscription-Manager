@@ -34,6 +34,9 @@ class SubscriptionsFragment : Fragment(R.layout.fragment_subscriptions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().window.navigationBarColor =
+            resources.getColor(R.color.colorPrimaryDark, null)
+
         setupFloatButton()
 
         setupSubscriptionsAdapter()
