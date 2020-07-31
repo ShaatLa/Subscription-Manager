@@ -4,6 +4,7 @@ import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsDomain
 import com.shaatla.subscribio.subscriptions.domain.boundary.SubscriptionsGateway
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
+import java.util.UUID
 
 /**
  * SubscriptionsDomain
@@ -19,29 +20,7 @@ class SubscriptionsInteractor(
     override fun observeSubscriptions(): Flow<List<Subscription>> =
         gateway.observeSubscriptions()
 
-//            For demo purposes
-//            emit(
-//                listOf(
-//                    Subscription(
-//                        id = 1,
-//                        creationDate = DateTime(),
-//                        provider = "Netflix",
-//                        price = 19.99f,
-//                        currency = Currency.getInstance("USD"),
-//                        expirationDate = DateTime().plusMonths(1),
-//                        lastEditTime = DateTime(),
-//                        color = Color.parseColor("#f44336")
-//                    ),
-//                    Subscription(
-//                        id = 2,
-//                        creationDate = DateTime(),
-//                        provider = "Amazon Prime",
-//                        price = 12.99f,
-//                        currency = Currency.getInstance("USD"),
-//                        expirationDate = DateTime().plusMonths(1),
-//                        lastEditTime = DateTime(),
-//                        color = Color.parseColor("#1bab2c")
-//                    )
-//                )
-//            )
+    override suspend fun deleteSubscription(id: UUID) {
+        gateway.deleteSubscription(id)
+    }
 }

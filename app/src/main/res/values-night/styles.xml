@@ -1,44 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/diodrum_regular</item>
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
     <style name="ButtonDefault" parent="Widget.MaterialComponents.Button">
         <item name="background">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/diodrum_semibold</item>
-        <item name="tint">@android:color/white</item>
+        <item name="tint">@android:color/black</item>
     </style>
 
     <style name="IconImageView">
-        <item name="tint">@android:color/white</item>
-    </style>
-
-    <style name="InfoEditText" parent="Widget.AppCompat.EditText">
-        <item name="android:fontFamily">@font/diodrum_light</item>
-        <item name="android:textSize">@dimen/text_size_big</item>
-        <item name="hintTextColor">@color/mine_shaft</item>
-    </style>
-
-    <style name="InfoTextView" parent="Widget.MaterialComponents.TextView">
-        <item name="android:fontFamily">@font/diodrum_light</item>
-        <item name="android:textSize">@dimen/text_size_big</item>
-    </style>
-
-    <style name="PeriodSpinnerItem">
-        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="tint">@android:color/black</item>
     </style>
 
     <style name="FloatingButton" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="srcCompat">@drawable/ic_add_24</item>
-        <item name="tint">@android:color/white</item>
+        <item name="tint">@android:color/black</item>
     </style>
 
 </resources>

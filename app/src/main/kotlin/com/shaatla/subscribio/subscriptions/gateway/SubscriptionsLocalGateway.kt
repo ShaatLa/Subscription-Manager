@@ -6,6 +6,7 @@ import com.shaatla.subscribio.subscriptions.gateway.boundary.SubscriptionsDao
 import com.shaatla.subscribio.subscriptions.gateway.dto.SubscriptionConverter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import java.util.UUID
 
 /**
  * SubscriptionsLocalGateway
@@ -25,4 +26,8 @@ class SubscriptionsLocalGateway(
                 subscriptionConverter.convert(entity)
             }
         }
+
+    override suspend fun deleteSubscription(id: UUID) {
+        dao.delete(id.toString())
+    }
 }

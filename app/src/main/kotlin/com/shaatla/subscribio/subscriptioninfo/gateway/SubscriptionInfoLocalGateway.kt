@@ -4,6 +4,7 @@ import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoG
 import com.shaatla.subscribio.subscriptioninfo.gateway.boundary.SubscriptionInfoDao
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.gateway.dto.SubscriptionConverter
+import java.util.UUID
 
 /**
  * SubscriptionInfoBoundGateway
@@ -17,9 +18,9 @@ class SubscriptionInfoLocalGateway(
     private val subscriptionConverter: SubscriptionConverter
 ) : SubscriptionInfoGateway {
 
-    override suspend fun getSubscription(id: Int): Subscription =
+    override suspend fun getSubscription(id: UUID): Subscription =
         subscriptionConverter.convert(
-            entity = subscriptionInfoDao.get(id)
+            entity = subscriptionInfoDao.get(id.toString())
         )
 
     override suspend fun save(subscription: Subscription) {
@@ -28,7 +29,7 @@ class SubscriptionInfoLocalGateway(
         )
     }
 
-    override suspend fun delete(id: Int) {
-        subscriptionInfoDao.delete(id)
+    override suspend fun delete(id: UUID) {
+        subscriptionInfoDao.delete(id.toString())
     }
 }

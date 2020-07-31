@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.shaatla.subscribio.R
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
+import java.util.Collections
+import java.util.UUID
 
 /**
  * SubscriptionsAdapter
@@ -16,8 +18,8 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 class SubscriptionsAdapter(
-    private val onItemClickListener: (id: Int) -> Unit
-): RecyclerView.Adapter<SubscriptionViewHolder>() {
+    private val onItemClickListener: (id: UUID, action: ItemAction) -> Unit
+): RecyclerView.Adapter<SubscriptionViewHolder>(), SubscriptionsItemTouchHelper {
 
     private val items = mutableListOf<Subscription>()
 
@@ -52,4 +54,17 @@ class SubscriptionsAdapter(
         }
     }
 
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(items, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(items, i, i - 1)
+            }
+        }
+
+        notifyItemMoved(fromPosition, toPosition)
+    }
 }

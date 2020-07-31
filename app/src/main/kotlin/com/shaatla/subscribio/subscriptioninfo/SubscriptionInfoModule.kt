@@ -8,6 +8,7 @@ import com.shaatla.subscribio.subscriptioninfo.gateway.SubscriptionInfoLocalGate
 import com.shaatla.subscribio.subscriptioninfo.ui.SubscriptionInfoViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import java.util.UUID
 
 /**
  * SubscriptionInfoModule
@@ -21,7 +22,7 @@ object SubscriptionInfoModule {
     val module = module {
 
         viewModel {
-            (id: Int) -> SubscriptionInfoViewModel(get(), id)
+            (id: UUID?) -> SubscriptionInfoViewModel(get(), id)
         }
 
         factory<SubscriptionInfoGateway> {

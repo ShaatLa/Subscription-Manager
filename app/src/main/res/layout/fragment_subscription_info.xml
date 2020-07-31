@@ -36,8 +36,9 @@
                 android:layout_marginHorizontal="@dimen/space_2x"
                 android:layout_marginTop="@dimen/space_default"
                 android:background="@null"
-                android:drawableEnd="@drawable/ic_edit_24"
                 android:enabled="false"
+                android:maxLines="1"
+                android:maxLength="28"
                 android:hint="@string/name_hint"
                 app:layout_constraintTop_toBottomOf="@id/subscriptionNameHeader"
                 tools:ignore="Autofill" />
@@ -94,13 +95,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_default"
-                android:layout_marginTop="@dimen/space_default"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="@dimen/space_2x"
                 android:background="@null"
                 android:enabled="false"
+                android:maxLines="1"
                 android:hint="@string/price_hint"
                 android:inputType="numberDecimal"
+                android:maxLength="9"
                 app:layout_constraintEnd_toStartOf="@id/changeCurrencyButton"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@id/priceCurrency"
                 app:layout_constraintTop_toBottomOf="@id/priceHeader"
                 tools:ignore="Autofill" />
@@ -178,6 +182,7 @@
                 android:gravity="center"
                 android:maxLength="7"
                 android:hint="@string/icon_hint"
+                android:maxLines="1"
                 android:inputType="textShortMessage"
                 android:imeOptions="actionSend|flagNoEnterAction"
                 app:layout_constraintStart_toStartOf="@id/iconHeader"
@@ -201,6 +206,7 @@
                 android:layout_marginHorizontal="@dimen/space_default"
                 android:layout_marginTop="@dimen/space_default"
                 android:gravity="start|top"
+                android:maxLength="200"
                 app:layout_constraintTop_toBottomOf="@id/noteHeader" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -224,7 +230,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_default"
-        android:backgroundTint="@color/delete"
+        android:backgroundTint="@color/red_orange"
         android:text="@string/delete"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

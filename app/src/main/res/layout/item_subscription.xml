@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="64dp"
     app:clickToClose="true"
     app:drag_edge="right"
     app:show_mode="pull_out">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deleteButton"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:background="@drawable/background_delete_button">
 
         <ImageView
-            android:id="@+id/deleteButton"
+            style="@style/IconImageView"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:layout_marginStart="@dimen/space_default"
             android:src="@drawable/ic_delete_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +31,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/subscriptionLogoBackground"
@@ -44,18 +45,19 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <ImageView
+        <TextView
             android:id="@+id/subscriptionLogo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/space_default"
             android:layout_marginStart="@dimen/space_2x"
             android:contentDescription="@string/subscription_image_description"
-            android:src="@mipmap/ic_launcher"
+            android:text="@string/icon_hint"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_logo_emoji"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/subscriptionName"

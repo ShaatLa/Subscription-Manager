@@ -1,11 +1,9 @@
 package com.shaatla.subscribio.subscriptioninfo.ui
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -30,12 +28,14 @@ import kotlinx.android.synthetic.main.fragment_subscription_info.creationDate
 import kotlinx.android.synthetic.main.fragment_subscription_info.icon
 import kotlinx.android.synthetic.main.fragment_subscription_info.infoCloseButton
 import kotlinx.android.synthetic.main.fragment_subscription_info.infoDeleteButton
+import kotlinx.android.synthetic.main.fragment_subscription_info.noteEditor
 import kotlinx.android.synthetic.main.fragment_subscription_info.price
 import kotlinx.android.synthetic.main.fragment_subscription_info.priceCurrency
 import kotlinx.android.synthetic.main.fragment_subscription_info.subscriptionName
 import org.joda.time.DateTime
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
 
@@ -65,20 +65,17 @@ class SubscriptionInfoFragment : Fragment(R.layout.fragment_subscription_info) {
     }
 
     private fun setupButtons() {
-        val inputMethodManager = requireView().context
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
         infoCloseButton.setOnClickListener {
             when {
-                //inputMethodManager.isActive -> hideKeyboard(requireView())
-
-                subscriptionName.isEnabled -> {
+                subscriptionName.isEnabled && subscriptionName.toString().isNotBlank() -> {
                     viewModel.saveSubscription()
                     findNavController().popBackStack()
                 }
 
                 else -> findNavController().popBackStack()
             }
+
+            hideKeyboard(requireView())
         }
 
         infoDeleteButton.setOnClickListener {
@@ -105,7 +102,7 @@ class SubscriptionInfoFragment : Fragment(R.layout.fragment_subscription_info) {
 
     private fun obtainSubscriptionInfo() {
         when (args.subscriptionId) {
-            EMPTY_ID -> {
+            null -> {
                 setupEditor()
             }
 
@@ -123,6 +120,10 @@ class SubscriptionInfoFragment : Fragment(R.layout.fragment_subscription_info) {
         priceCurrency.text = subscription.currency.symbol
         price.text.insert(0, subscription.price.toString())
         icon.text.insert(0, subscription.icon)
+
+        if (subscription.note.isBlank()) {
+            noteEditor.isGone = true
+        }
     }
 
     private fun setupEditor() {
@@ -146,8 +147,18 @@ class SubscriptionInfoFragment : Fragment(R.layout.fragment_subscription_info) {
             }
         }
 
+        price.doOnTextChanged { text, _, _, _ ->
+            if (text.toString().isNotBlank()) {
+                viewModel.baseSubscription = viewModel.baseSubscription.copy(
+                    price = NumberFormat.getInstance().parse(text.toString())?.toFloat() ?: 0.00f
+                )
+            }
+        }
+
         icon.doOnTextChanged { text, _, _, _ ->
-            viewModel.baseSubscription = viewModel.baseSubscription.copy(icon = text.toString())
+            if (text.toString().isNotBlank()) {
+                viewModel.baseSubscription = viewModel.baseSubscription.copy(icon = text.toString())
+            }
         }
 
         setupDatePickerDialog()
@@ -287,8 +298,6 @@ class SubscriptionInfoFragment : Fragment(R.layout.fragment_subscription_info) {
     }
 
     companion object {
-        const val EMPTY_ID = 0
-
         const val CURRENCY_PICKER = "currency_picker"
 
         const val COLOR_PICKER = "color_picker"

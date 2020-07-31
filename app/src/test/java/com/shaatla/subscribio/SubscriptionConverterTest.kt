@@ -20,6 +20,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.io.InputStream
 import java.util.Currency
+import java.util.UUID
 
 
 /**
@@ -46,10 +47,11 @@ class SubscriptionConverterTest {
     fun conversionTest() {
         val converter = SubscriptionConverter()
 
+        val id = UUID.randomUUID()
         val currentDate = DateTime()
 
         val entity = SubscriptionEntity(
-            id = 1,
+            id = id.toString(),
             creationDate = currentDate.toString(),
             provider = "Netflix",
             price = 259.00f,
@@ -66,7 +68,7 @@ class SubscriptionConverterTest {
         )
 
         val subscription = Subscription(
-            id = 1,
+            id = id,
             creationDate = currentDate,
             provider = "Netflix",
             price = 259.00f,

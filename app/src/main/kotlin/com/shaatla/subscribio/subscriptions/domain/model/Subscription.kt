@@ -2,6 +2,7 @@ package com.shaatla.subscribio.subscriptions.domain.model
 
 import org.joda.time.DateTime
 import java.util.Currency
+import java.util.UUID
 
 /**
  * Subscription
@@ -11,7 +12,7 @@ import java.util.Currency
  * Copyright (c) 2020 ShaatLa. All rights reserved.
  */
 data class Subscription(
-    val id: Int,
+    val id: UUID,
     val icon: String,
     val provider: String,
     val price: Float,

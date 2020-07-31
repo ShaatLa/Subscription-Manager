@@ -1,16 +1,22 @@
 package com.shaatla.subscribio.subscriptions.ui.recycler
 
-import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.daimajia.swipe.SwipeLayout
 import com.shaatla.subscribio.R
+import com.shaatla.subscribio.infrastructure.util.setDebouncedOnClickListener
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.android.synthetic.main.item_subscription.view.currency
+import kotlinx.android.synthetic.main.item_subscription.view.deleteButton
 import kotlinx.android.synthetic.main.item_subscription.view.price
 import kotlinx.android.synthetic.main.item_subscription.view.subscriptionDate
+import kotlinx.android.synthetic.main.item_subscription.view.subscriptionLogo
 import kotlinx.android.synthetic.main.item_subscription.view.subscriptionLogoBackground
 import kotlinx.android.synthetic.main.item_subscription.view.subscriptionName
+import timber.log.Timber
+import java.util.UUID
 
 
 /**
@@ -22,10 +28,11 @@ import kotlinx.android.synthetic.main.item_subscription.view.subscriptionName
  */
 class SubscriptionViewHolder(
     private val view: View,
-    private val onItemClickListener: (id: Int) -> Unit
+    private val onItemClickListener: (id: UUID, action: ItemAction) -> Unit
 ) : RecyclerView.ViewHolder(view) {
 
     fun bind(subscription: Subscription) {
+        view.subscriptionLogo.text = subscription.icon
         view.subscriptionName.text = subscription.provider
         view.subscriptionDate.text = view.context
             .getString(
@@ -37,7 +44,7 @@ class SubscriptionViewHolder(
 
         val gradientColors = IntArray(2).apply {
             this[0] = subscription.color
-            this[1] = Color.WHITE
+            this[1] = view.solidColor
         }
         val gradient =
             GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, gradientColors).apply {
@@ -46,8 +53,37 @@ class SubscriptionViewHolder(
             }
         view.subscriptionLogoBackground.setImageDrawable(gradient)
 
-        view.setOnClickListener {
-            onItemClickListener.invoke(subscription.id)
+        //TODO Refactor
+        var lastAction = 0
+        view.setOnTouchListener { view, event ->
+            Timber.d("%d %d", event.action, event.historySize)
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+                    if (lastAction == MotionEvent.ACTION_MOVE) {
+                        false
+                    } else {
+                        if (view is SwipeLayout && view.openStatus == SwipeLayout.Status.Open) {
+                            lastAction = 0
+                            view.close()
+                            true
+                        } else {
+                            lastAction = 0
+                            view.performClick()
+                            onItemClickListener.invoke(subscription.id, ItemAction.NAVIGATE)
+                            true
+                        }
+                    }
+                }
+
+                else -> {
+                    lastAction = event.action
+                    false
+                }
+            }
+        }
+
+        view.deleteButton.setOnClickListener {
+            onItemClickListener.invoke(subscription.id, ItemAction.DELETE)
         }
     }
 }

@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
 import kotlinx.coroutines.flow.Flow
+import java.util.UUID
 
 /**
  * SubscriptionDao
@@ -24,7 +25,7 @@ interface SubscriptionInfoDao {
      * @return certain subscription flow
      */
     @Query("SELECT * FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun observe(id: Int): Flow<SubscriptionEntity>
+    fun observe(id: String): Flow<SubscriptionEntity>
 
     /**
      * Return certain subscription
@@ -33,7 +34,7 @@ interface SubscriptionInfoDao {
      * @return certain subscription
      */
     @Query("SELECT * FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun get(id: Int): SubscriptionEntity
+    fun get(id: String): SubscriptionEntity
 
     /**
      * Save subscription into DB
@@ -49,5 +50,5 @@ interface SubscriptionInfoDao {
      * @param id id of subscription which have to be deleted
      */
     @Query("DELETE FROM ${SubscriptionEntity.TABLE_NAME} WHERE ${SubscriptionEntity.COLUMN_ID} = :id")
-    fun delete(id: Int)
+    fun delete(id: String)
 }

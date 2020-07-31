@@ -3,7 +3,6 @@ package com.shaatla.subscribio.subscriptioninfo.ui
 import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.shaatla.subscribio.subscriptioninfo.domain.boundary.SubscriptionInfoDomain
 import com.shaatla.subscribio.subscriptions.domain.model.BillingPeriod
 import com.shaatla.subscribio.subscriptions.domain.model.NotificationPeriod
@@ -11,10 +10,12 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import java.util.Currency
 import java.util.Locale
+import java.util.UUID
 
 /**
  * SubscriptionViewModel
@@ -25,13 +26,13 @@ import java.util.Locale
  */
 class SubscriptionInfoViewModel(
     private val domain: SubscriptionInfoDomain,
-    private val id: Int
+    private val id: UUID?
 ) : ViewModel() {
 
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     var baseSubscription: Subscription = Subscription(
-        id = 1,
+        id = id ?: UUID.randomUUID(),
         icon = "",
         provider = "",
         expirationDate = DateTime(),
@@ -49,11 +50,19 @@ class SubscriptionInfoViewModel(
 
     val subscriptionLiveData = MutableLiveData<Subscription>()
 
+    override fun onCleared() {
+        super.onCleared()
+
+        viewModelScope.cancel()
+    }
+
     fun getSubscriptionInfo() {
         viewModelScope.launch {
-            domain.getSubscription(id).also { subscription ->
-                baseSubscription = subscription
-                subscriptionLiveData.postValue(subscription)
+            if (id != null) {
+                domain.getSubscription(id).also { subscription ->
+                    baseSubscription = subscription
+                    subscriptionLiveData.postValue(subscription)
+                }
             }
         }
     }
@@ -66,7 +75,9 @@ class SubscriptionInfoViewModel(
 
     fun deleteSubscription() {
         viewModelScope.launch {
-            domain.deleteSubscription(id)
+            if (id != null) {
+                domain.deleteSubscription(id)
+            }
         }
     }
 }

@@ -31,4 +31,12 @@ interface SubscriptionsDao {
      */
     @Query("DELETE FROM ${SubscriptionEntity.TABLE_NAME}" )
     fun deleteAll()
+
+    /**
+     * Delete subscription record from table
+     *
+     * @param id of subscription which have to be deleted
+     */
+    @Query("DELETE FROM ${SubscriptionEntity.TABLE_NAME} WHERE id = :id" )
+    fun delete(id: String)
 }

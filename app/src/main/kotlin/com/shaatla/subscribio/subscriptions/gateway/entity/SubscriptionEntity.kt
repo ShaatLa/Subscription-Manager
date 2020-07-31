@@ -18,7 +18,7 @@ import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity.Co
 class SubscriptionEntity(
     @PrimaryKey
     @ColumnInfo(name = COLUMN_ID)
-    val id: Int,
+    val id: String,
     @ColumnInfo(name = COLUMN_ICON)
     val icon: String,
     @ColumnInfo(name = COLUMN_PROVIDER)

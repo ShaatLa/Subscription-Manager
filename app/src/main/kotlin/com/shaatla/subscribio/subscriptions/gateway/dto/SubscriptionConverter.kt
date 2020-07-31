@@ -6,6 +6,7 @@ import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import com.shaatla.subscribio.subscriptions.gateway.entity.SubscriptionEntity
 import org.joda.time.DateTime
 import java.util.Currency
+import java.util.UUID
 
 /**
  * SubscriptionConverter
@@ -18,7 +19,7 @@ class SubscriptionConverter {
 
     fun convert(entity: SubscriptionEntity): Subscription =
         Subscription(
-            id = entity.id,
+            id = UUID.fromString(entity.id),
             icon = entity.icon,
             provider = entity.provider,
             expirationDate = DateTime(entity.expirationDate),
@@ -48,7 +49,7 @@ class SubscriptionConverter {
 
     fun convert(subscription: Subscription): SubscriptionEntity =
         SubscriptionEntity(
-            id = subscription.id,
+            id = subscription.id.toString(),
             icon = subscription.icon,
             provider = subscription.provider,
             expirationDate = subscription.expirationDate.toString(),

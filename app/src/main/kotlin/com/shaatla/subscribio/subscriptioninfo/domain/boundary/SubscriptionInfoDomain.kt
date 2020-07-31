@@ -2,6 +2,7 @@ package com.shaatla.subscribio.subscriptioninfo.domain.boundary
 
 import com.shaatla.subscribio.subscriptions.domain.model.Subscription
 import kotlinx.coroutines.flow.Flow
+import java.util.UUID
 
 /**
  * SubscriptionInfoDomain
@@ -18,7 +19,7 @@ interface SubscriptionInfoDomain {
      * @param id ID of the subscription
      * @return Subscription from repository
      */
-    suspend fun getSubscription(id: Int): Subscription
+    suspend fun getSubscription(id: UUID): Subscription
 
     /**
      * Save subscription to local repository
@@ -33,5 +34,5 @@ interface SubscriptionInfoDomain {
      *
      * @param id of subscription which have to be deleted
      */
-    suspend fun deleteSubscription(id: Int)
+    suspend fun deleteSubscription(id: UUID)
 }
