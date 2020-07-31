@@ -18,6 +18,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
+import java.util.UUID
 
 /**
  * DatabaseTest
@@ -47,10 +48,11 @@ class DatabaseTest {
     @Test
     @Throws(Exception::class)
     fun writeAndReadTest() {
-        val subscriptionEntity: SubscriptionEntity = TestUtil.createSubscription(SUBSCRIPTION_TEST_ID)
+        val id = UUID.randomUUID().toString()
+        val subscriptionEntity: SubscriptionEntity = TestUtil.createSubscription(id)
         dao.save(subscriptionEntity)
 
-        val subscriptionEntityFromDb = dao.get(SUBSCRIPTION_TEST_ID)
+        val subscriptionEntityFromDb = dao.get(id)
         assertThat(subscriptionEntity.id, equalTo(subscriptionEntityFromDb.id))
         assertThat(subscriptionEntity.provider, equalTo(subscriptionEntityFromDb.provider))
         assertThat(subscriptionEntity.expirationDate, equalTo(subscriptionEntityFromDb.expirationDate))
@@ -63,7 +65,7 @@ class DatabaseTest {
 
     private class TestUtil {
         companion object {
-            fun createSubscription(id: Int) =
+            fun createSubscription(id: String) =
                 SubscriptionEntity(
                     id = id,
                     icon = "",
@@ -73,10 +75,10 @@ class DatabaseTest {
                     currency = "USD",
                     creationDate = DateTime().toString(),
                     lastEditTime = DateTime().toString(),
-                    color = Color.parseColor(TEST_COLOR_CODE).toString(),
+                    color = Color.parseColor(TEST_COLOR_CODE),
                     billingPeriod = 2,
-                    notification = false,
                     notificationPeriod = 0,
+                    doesNotificationNeed = false,
                     note = "",
                     paymentMethod = ""
                 )
@@ -84,8 +86,6 @@ class DatabaseTest {
     }
 
     companion object {
-        private const val SUBSCRIPTION_TEST_ID = 3
-
         private const val TEST_COLOR_CODE = "#F44336"
     }
 }
